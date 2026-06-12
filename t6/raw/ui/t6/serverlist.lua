@@ -3,29 +3,47 @@ require("T6.ServerListButton")
 CoD.ServerList = {}
 CoD.ServerList.Columns = {}
 CoD.ServerList.Columns[1] = {}
-CoD.ServerList.Columns[1].Width = 250
+CoD.ServerList.Columns[1].Width = 30
 CoD.ServerList.Columns[1].Sortable = 0
-CoD.ServerList.Columns[1].Text = Engine.Localize("MENU_HOST_CAPS")
+CoD.ServerList.Columns[1].Text = ""
 CoD.ServerList.Columns[2] = {}
-CoD.ServerList.Columns[2].Width = 200
+CoD.ServerList.Columns[2].Width = 250
 CoD.ServerList.Columns[2].Sortable = 0
-CoD.ServerList.Columns[2].Text = Engine.Localize("MENU_MAP_NAME_CAPS")
+CoD.ServerList.Columns[2].Text = Engine.Localize("MENU_HOST_CAPS")
 CoD.ServerList.Columns[3] = {}
-CoD.ServerList.Columns[3].Width = 100
-CoD.ServerList.Columns[3].Sortable = 1
-CoD.ServerList.Columns[3].Text = Engine.Localize("MENU_NUMPLAYERS_CAPS")
+CoD.ServerList.Columns[3].Width = 200
+CoD.ServerList.Columns[3].Sortable = 0
+CoD.ServerList.Columns[3].Text = Engine.Localize("MENU_MAP_NAME_CAPS")
 CoD.ServerList.Columns[4] = {}
-CoD.ServerList.Columns[4].Width = 200
-CoD.ServerList.Columns[4].Sortable = 0
-CoD.ServerList.Columns[4].Text = Engine.Localize("MENU_GAME_MODE_CAPS")
+CoD.ServerList.Columns[4].Width = 100
+CoD.ServerList.Columns[4].Sortable = 1
+CoD.ServerList.Columns[4].Text = Engine.Localize("MENU_NUMPLAYERS_CAPS")
 CoD.ServerList.Columns[5] = {}
-CoD.ServerList.Columns[5].Width = 93
-CoD.ServerList.Columns[5].Sortable = 1
-CoD.ServerList.Columns[5].Text = Engine.Localize("MENU_PING_CAPS")
+CoD.ServerList.Columns[5].Width = 200
+CoD.ServerList.Columns[5].Sortable = 0
+CoD.ServerList.Columns[5].Text = Engine.Localize("MENU_GAME_MODE_CAPS")
+CoD.ServerList.Columns[6] = {}
+CoD.ServerList.Columns[6].Width = 63
+CoD.ServerList.Columns[6].Sortable = 1
+CoD.ServerList.Columns[6].Text = Engine.Localize("MENU_PING_CAPS")
 CoD.ServerList.RowHeight = CoD.CoD9Button.Height
 CoD.ServerList.ColumnSpacing = 5
 CoD.ServerList.NumElements = 18
-CoD.ServerList.TotalWidth = 830
+CoD.ServerList.TotalWidth = 868
+
+CoD.ServerList.GetPingColor = function(ping)
+    ping = tonumber(ping) or 999
+    
+    if ping <= 60 then
+        return { 0, 1, 0 }
+    elseif ping <= 120 then
+        return { 1, 1, 0 }
+    elseif ping <= 200 then
+        return { 1, 0.5, 0 }
+    else
+        return { 1, 0, 0 }
+    end
+end
 
 CoD.ServerList.UpdateButtonHeaders = function(self)
 	local button = self.m_firstButton
@@ -90,28 +108,41 @@ CoD.ServerList.CreateButtonMutables = function (LocalClientIndex, element, mutab
 	element:addElement(element.serverListButton)
 end
 
+CoD.ServerList.LockedIcon = RegisterMaterial("hud_server_locked")
+
 CoD.ServerList.GetButtonData = function (LocalClientIndex, index, element, parent)
 	element.serverListButton.server = Engine.ServerListGetServer(LocalClientIndex, index)
 	element.serverListButton.parent = parent
 	element.serverListButton:updateBorder()
 
-	element.serverListButton.Columns[2]:setText(element.serverListButton.server.displayable_map)
-	element.serverListButton.Columns[3]:setText(#element.serverListButton.server.players .. "/" .. element.serverListButton.server.maxplayers)
-	element.serverListButton.Columns[4]:setText(element.serverListButton.server.displayable_gametype)
-	element.serverListButton.Columns[5]:setText(element.serverListButton.server.ping)
+	if element.serverListButton.server.has_password then
+		element.serverListButton.Columns[1]:setImage(CoD.ServerList.LockedIcon)
+		element.serverListButton.Columns[1]:setAlpha(1)
+	else
+		element.serverListButton.Columns[1]:setAlpha(0)
+	end
 
-	element.serverListButton.Columns[1]:setText(element.serverListButton.server.hostname)
+	element.serverListButton.Columns[3]:setText(element.serverListButton.server.displayable_map)
+	element.serverListButton.Columns[4]:setText(#element.serverListButton.server.players .. "/" .. element.serverListButton.server.maxplayers .. " (" .. element.serverListButton.server.bots .. ")")
+	element.serverListButton.Columns[5]:setText(element.serverListButton.server.displayable_gametype)
+
+	local ping = element.serverListButton.server.ping
+    local pingColor = CoD.ServerList.GetPingColor(ping)
+
+	element.serverListButton.Columns[6]:setText(ping)
+    element.serverListButton.Columns[6]:setRGB(pingColor[1], pingColor[2], pingColor[3])
+
+	element.serverListButton.Columns[2]:setText(element.serverListButton.server.hostname)
 	local _, __, textWidth, ___ = GetTextDimensions(element.serverListButton.server.hostname, CoD.ServerListButton.Font, CoD.ServerListButton.TextHeight)
 
 	local scale = 0.5
-	if textWidth > CoD.ServerList.Columns[1].Width - 15 then
-		scale = scale * ((CoD.ServerList.Columns[1].Width - 15) / textWidth)
+	if textWidth > CoD.ServerList.Columns[2].Width - 15 then
+		scale = scale * ((CoD.ServerList.Columns[2].Width - 15) / textWidth)
 	end
 
-	element.serverListButton.Columns[1]:setTopBottom(false, false, -CoD.ServerListButton.TextHeight * scale, CoD.ServerListButton.TextHeight * scale)
+	element.serverListButton.Columns[2]:setTopBottom(false, false, -CoD.ServerListButton.TextHeight * scale, CoD.ServerListButton.TextHeight * scale)
 end
 
-CoD.ServerList.OpenedOnce = false
 CoD.ServerList.new = function (defaultAnimationState, LocalClientIndex)
 	local self = CoD.ListBox.new(defaultAnimationState, LocalClientIndex, CoD.ServerList.NumElements, CoD.ServerList.RowHeight, CoD.ServerList.TotalWidth, CoD.ServerList.CreateButtonMutables, CoD.ServerList.GetButtonData)
 
@@ -125,9 +156,7 @@ CoD.ServerList.new = function (defaultAnimationState, LocalClientIndex)
 	self.oldGenerate = self.generate
 	self.generate = CoD.ServerList.Generate
 
-	if not CoD.ServerList.OpenedOnce then
-		CoD.ServerList.OpenedOnce = true
-
+	if CoD.ServerList.LastIndex ~= nil then
 		self:processEvent( {
 			name = "serverlist_jumpToTop"
 		} )

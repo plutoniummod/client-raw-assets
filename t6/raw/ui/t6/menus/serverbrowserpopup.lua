@@ -6,11 +6,7 @@ CoD.ServerBrowser = {}
 
 CoD.ServerBrowser.UpdateHeader = function(headerButton)
 	if UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == headerButton.column then
-		if UIExpression.DvarBool(0, "ui_serverbrowser_sortheader_reverse") then
-			headerButton.headerText:setRGB(CoD.BOIIOrange.r, CoD.BOIIOrange.g, CoD.BOIIOrange.b)
-		else
-			headerButton.headerText:setRGB(CoD.BOIIOrange.r, CoD.BOIIOrange.g, CoD.BOIIOrange.b)
-		end
+		headerButton.headerText:setRGB(CoD.BOIIOrange.r, CoD.BOIIOrange.g, CoD.BOIIOrange.b)
 	else
 		headerButton.headerText:setRGB(CoD.white.r, CoD.white.g, CoD.white.b)
 	end
@@ -28,7 +24,7 @@ end
 
 CoD.ServerBrowser.HoverHeader = function(headerButton, event)
 	if CoD.ServerList.Columns[headerButton.column].Sortable == 1 then
-		headerButton.headerText:setRGB(CoD.yellow.r, CoD.yellow.g, CoD.yellow.b)
+		headerButton.headerText:setRGB(CoD.BOIIOrange.r, CoD.BOIIOrange.g, CoD.BOIIOrange.b)
 	end
 end
 

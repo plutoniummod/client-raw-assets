@@ -8,11 +8,11 @@ CoD.ServerListButton.ServerListButtonGainFocus = function (self, ClientInstance)
 end
 
 CoD.ServerListButton.UpdateBorder = function (self)
+	self.border:setRGB(CoD.BOIIOrange.r, CoD.BOIIOrange.g, CoD.BOIIOrange.b)
+
 	if CoD.ServerList.SelectedServer == nil or self.server == nil or CoD.ServerList.SelectedServer.ip ~= self.server.ip or CoD.ServerList.SelectedServer.port ~= self.server.port then
-		self.border:setRGB(CoD.yellow.r, CoD.yellow.g, CoD.yellow.b)
 		self.border:hide()
 	else
-		self.border:setRGB(CoD.BOIIOrange.r, CoD.BOIIOrange.g, CoD.BOIIOrange.b)
 		self.border:show()
 	end
 end
@@ -23,7 +23,7 @@ CoD.ServerListButton.BorderUp = function (self, event)
 end
 
 CoD.ServerListButton.BorderOver = function (self, event)
-	self.border:setRGB(CoD.yellow.r, CoD.yellow.g, CoD.yellow.b)
+	self.border:setRGB(CoD.BOIIOrange.r, CoD.BOIIOrange.g, CoD.BOIIOrange.b)
 	self.border:show()
 end
 
@@ -45,17 +45,30 @@ CoD.ServerListButton.new = function (defaultAnimationState, LocalClientIndex, ac
 	ButtonColumns:addSpacer(CoD.ServerListButton.TextOffset)
 	ServerListButton.Columns = {}
 	for Column = 1, #CoD.ServerList.Columns, 1 do
-		ServerListButton.Columns[Column] = LUI.UIText.new({
-			left = 0,
-			top = -CoD.ServerListButton.TextHeight / 2,
-			right = CoD.ServerList.Columns[Column].Width,
-			bottom = CoD.ServerListButton.TextHeight / 2,
-			leftAnchor = true,
-			topAnchor = false,
-			rightAnchor = false,
-			bottomAnchor = false,
-			font = CoD.ServerListButton.Font,
-		})
+		if Column == 1 then
+			ServerListButton.Columns[Column] = LUI.UIImage.new({
+				left = 0,
+				top = -10,
+				right = 20,
+				bottom = 10,
+				leftAnchor = true,
+				topAnchor = false,
+				rightAnchor = false,
+				bottomAnchor = false
+			})
+		else
+			ServerListButton.Columns[Column] = LUI.UIText.new({
+				left = 0,
+				top = -CoD.ServerListButton.TextHeight / 2,
+				right = CoD.ServerList.Columns[Column].Width,
+				bottom = CoD.ServerListButton.TextHeight / 2,
+				leftAnchor = true,
+				topAnchor = false,
+				rightAnchor = false,
+				bottomAnchor = false,
+				font = CoD.ServerListButton.Font,
+			})
+		end
 
 		ButtonColumns:addElement(ServerListButton.Columns[Column])
 	end
@@ -63,7 +76,7 @@ CoD.ServerListButton.new = function (defaultAnimationState, LocalClientIndex, ac
 	ServerListButton:addElement(ButtonColumns)
 
 	local Border = CoD.Border.new(2)
-	Border:setRGB(CoD.yellow.r, CoD.yellow.g, CoD.yellow.b)
+	Border:setRGB(CoD.BOIIOrange.r, CoD.BOIIOrange.g, CoD.BOIIOrange.b)
 	Border:hide()
 	ServerListButton.border = Border
 	ServerListButton:registerEventHandler("button_over", CoD.ServerListButton.BorderOver)
