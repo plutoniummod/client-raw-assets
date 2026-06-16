@@ -111,21 +111,21 @@ end
 
 CoD.MainLobby.OpenPlayerMatchPartyLobby = function (MainLobbyWidget, ClientInstance)
 	if CoD.MainLobby.ShouldPreventCreateLobby() then
-		return 
+		return
 	elseif CoD.MainLobby.OnlinePlayAvailable(MainLobbyWidget, ClientInstance) == 1 then
 		Engine.ProbationCheckForDashboardWarning(CoD.GAMEMODE_PUBLIC_MATCH)
 		local InProbation, LocalClientIndexInProbation = Engine.ProbationCheckInProbation(CoD.GAMEMODE_PUBLIC_MATCH)
 		if InProbation == true then
 			MainLobbyWidget:openPopup("popup_public_inprobation", LocalClientIndexInProbation)
-			return 
+			return
 		end
 		local GivenProbation, LocalClientIndexGivenProbation = Engine.ProbationCheckForProbation(CoD.GAMEMODE_PUBLIC_MATCH)
 		if GivenProbation == true then
 			MainLobbyWidget:openPopup("popup_public_givenprobation", LocalClientIndexGivenProbation)
-			return 
+			return
 		elseif Engine.ProbationCheckParty(CoD.GAMEMODE_PUBLIC_MATCH, ClientInstance.controller) == true then
 			MainLobbyWidget:openPopup("popup_public_partyprobation", ClientInstance.controller)
-			return 
+			return
 		end
 		local MaxLocalPlayers = UIExpression.DvarInt(LocalClientIndexGivenProbation, "party_maxlocalplayers_playermatch")
 		if CoD.MainLobby.IsControllerCountValid(MainLobbyWidget, ClientInstance.controller, MaxLocalPlayers) == 1 then
@@ -146,21 +146,21 @@ end
 
 CoD.MainLobby.OpenLeagueSelectionPopup = function (MainLobbyWidget, ClientInstance)
 	if CoD.MainLobby.ShouldPreventCreateLobby() then
-		return 
+		return
 	elseif CoD.MainLobby.OnlinePlayAvailable(MainLobbyWidget, ClientInstance) == 1 then
 		Engine.ProbationCheckForDashboardWarning(CoD.GAMEMODE_PUBLIC_MATCH)
 		local InProbation, LocalClientIndexInProbation = Engine.ProbationCheckInProbation(CoD.GAMEMODE_LEAGUE_MATCH)
 		if InProbation == true then
 			MainLobbyWidget:openPopup("popup_league_inprobation", LocalClientIndexInProbation)
-			return 
+			return
 		end
 		local GivenProbation, LocalClientIndexGivenProbation = Engine.ProbationCheckForProbation(CoD.GAMEMODE_LEAGUE_MATCH)
 		if GivenProbation == true then
 			MainLobbyWidget:openPopup("popup_league_givenprobation", LocalClientIndexGivenProbation)
-			return 
+			return
 		elseif Engine.ProbationCheckParty(CoD.GAMEMODE_LEAGUE_MATCH, ClientInstance.controller) == true then
 			MainLobbyWidget:openPopup("popup_league_partyprobation", ClientInstance.controller)
-			return 
+			return
 		end
 		Engine.PartyHostSetUIState(CoD.PARTYHOST_STATE_SELECTING_PLAYLIST)
 		CoD.PlaylistCategoryFilter = "leaguematch"
@@ -172,7 +172,7 @@ end
 
 CoD.MainLobby.OpenLeaguePlayPartyLobby = function (MainLobbyWidget, ClientInstance)
 	if CoD.MainLobby.ShouldPreventCreateLobby() then
-		return 
+		return
 	elseif CoD.MainLobby.OnlinePlayAvailable(MainLobbyWidget, ClientInstance) == 1 then
 		local MaxLocalPlayers = UIExpression.DvarInt(ClientInstance.controller, "party_maxlocalplayers_playermatch")
 		if CoD.MainLobby.IsControllerCountValid(MainLobbyWidget, ClientInstance.controller, MaxLocalPlayers) == 1 then
@@ -186,7 +186,7 @@ end
 
 CoD.MainLobby.OpenCustomGamesLobby = function (MainLobbyWidget, ClientInstance)
 	if CoD.MainLobby.ShouldPreventCreateLobby() then
-		return 
+		return
 	elseif CoD.MainLobby.OnlinePlayAvailable(MainLobbyWidget, ClientInstance) == 1 and CoD.MainLobby.IsControllerCountValid(MainLobbyWidget, ClientInstance.controller, UIExpression.DvarInt(ClientInstance.controller, "party_maxlocalplayers_privatematch")) == 1 then
 		CoD.SwitchToPrivateLobby(ClientInstance.controller)
 		if CoD.isZombie == true then
@@ -202,7 +202,7 @@ end
 
 CoD.MainLobby.OpenSoloLobby_Zombie = function (MainLobbyWidget, ClientInstance)
 	if CoD.MainLobby.ShouldPreventCreateLobby() then
-		return 
+		return
 	elseif CoD.MainLobby.OnlinePlayAvailable(MainLobbyWidget, ClientInstance) == 1 then
 		if CoD.MainLobby.IsControllerCountValid(MainLobbyWidget, ClientInstance.controller, 1) == 1 then
 			MainLobbyWidget.lobbyPane.body.lobbyList.maxLocalPlayers = 1
@@ -219,17 +219,17 @@ end
 
 CoD.MainLobby.OpenTheaterLobby = function (MainLobbyWidget, ClientInstance)
 	if CoD.MainLobby.ShouldPreventCreateLobby() then
-		return 
+		return
 	elseif UIExpression.CanSwitchToLobby(ClientInstance.controller, Dvar.party_maxplayers_theater:get(), Dvar.party_maxlocalplayers_theater:get()) == 0 then
 		Dvar.ui_errorTitle:set(Engine.Localize("MENU_NOTICE_CAPS"))
 		Dvar.ui_errorMessage:set(Engine.Localize("MENU_FILESHARE_MAX_LOCAL_PLAYERS"))
 		CoD.Menu.OpenErrorPopup(MainLobbyWidget, {
 			controller = ClientInstance.controller
 		})
-		return 
+		return
 	elseif Engine.CanViewContent() == false then
 		MainLobbyWidget:openPopup("popup_contentrestricted", ClientInstance.controller)
-		return 
+		return
 	elseif CoD.MainLobby.OnlinePlayAvailable(MainLobbyWidget, ClientInstance) == 1 and CoD.MainLobby.IsControllerCountValid(MainLobbyWidget, ClientInstance.controller, UIExpression.DvarInt(ClientInstance.controller, "party_maxlocalplayers_theater")) == 1 then
 		CoD.SwitchToTheaterLobby(ClientInstance.controller)
 		local TheaterLobbyMenu = MainLobbyWidget:openMenu("TheaterLobby", ClientInstance.controller, {
@@ -242,10 +242,10 @@ end
 CoD.MainLobby.OpenCODTV = function (MainLobbyWidget, ClientInstance)
 	if Engine.CanViewContent() == false then
 		MainLobbyWidget:openPopup("popup_contentrestricted", ClientInstance.controller)
-		return 
+		return
 	elseif Engine.IsLivestreamEnabled() then
 		MainLobbyWidget:openPopup("CODTv_Error", ClientInstance.controller)
-		return 
+		return
 	elseif CoD.MainLobby.OnlinePlayAvailable(MainLobbyWidget, ClientInstance) == 1 and Engine.IsCodtvContentLoaded() == true then
 		CoD.perController[ClientInstance.controller].codtvRoot = "community"
 		MainLobbyWidget:openPopup("CODTv", ClientInstance.controller)
@@ -255,7 +255,7 @@ end
 CoD.MainLobby.OpenBarracks = function (MainLobbyWidget, ClientInstance)
 	if UIExpression.IsGuest(ClientInstance.controller) == 1 then
 		MainLobbyWidget:openPopup("popup_guest_contentrestricted", ClientInstance.controller)
-		return 
+		return
 	elseif CoD.MainLobby.OnlinePlayAvailable(MainLobbyWidget, ClientInstance) == 1 then
 		if CoD.isZombie == true then
 			Engine.Exec(ClientInstance.controller, "party_setHostUIString ZMUI_VIEWING_LEADERBOARD")
@@ -269,13 +269,13 @@ end
 
 CoD.MainLobby.OpenStore = function (MainLobbyWidget, ClientInstance)
 	if MainLobbyWidget.occludedBy then
-		return 
+		return
 	end
 	Engine.SetDvar("ui_openStoreForMTX", 0)
 	if Engine.CheckNetConnection() == false then
 		local NetConnectionCheckPopup = MainLobbyWidget:openPopup("popup_net_connection_store", ClientInstance.controller)
 		NetConnectionCheckPopup.callingMenu = MainLobbyWidget
-		return 
+		return
 	end
 	Engine.Exec(ClientInstance.controller, "setclientbeingusedandprimary")
 	if CoD.MainLobby.OnlinePlayAvailable(MainLobbyWidget, ClientInstance, true) == 1 then
@@ -353,7 +353,7 @@ end
 
 CoD.MainLobby.UpdateButtonPaneButtonVisibilty = function (MainLobbyButtonPane)
 	if MainLobbyButtonPane == nil or MainLobbyButtonPane.body == nil then
-		return 
+		return
 	elseif CoD.isZombie == true then
 		CoD.MainLobby.UpdateButtonPaneButtonVisibilty_Zombie(MainLobbyButtonPane)
 	else
@@ -364,7 +364,7 @@ end
 
 CoD.MainLobby.UpdateButtonPromptVisibility = function (MainLobbyWidget)
 	if MainLobbyWidget == nil then
-		return 
+		return
 	end
 	MainLobbyWidget:removeBackButton()
 	local ShouldAddJoinButton = false
@@ -563,7 +563,7 @@ end
 
 CoD.MainLobby.Update = function (MainLobbyWidget, ClientInstance)
 	if MainLobbyWidget == nil then
-		return 
+		return
 	elseif UIExpression.IsDemonwareFetchingDone(ClientInstance.controller) == 1 == true then
 		MainLobbyWidget.panelManager:processEvent({
 			name = "fetching_done"
@@ -594,13 +594,13 @@ end
 
 CoD.MainLobby.Back = function (MainLobbyWidget, ClientInstance)
 	if CoD.Lobby.OpenSignOutPopup(MainLobbyWidget, ClientInstance) == true then
-		return 
+		return
 	elseif UIExpression.IsPrimaryLocalClient(ClientInstance.controller) == 0 then
 		Engine.Exec(ClientInstance.controller, "signclientout")
 		MainLobbyWidget:processEvent({
 			name = "controller_backed_out"
 		})
-		return 
+		return
 	elseif UIExpression.AloneInPartyIgnoreSplitscreen(ClientInstance.controller, 1) == 0 then
 		local CustomLeaveMessage = {
 			params = {}
@@ -692,8 +692,8 @@ CoD.MainLobby.ButtonPromptJoin = function (MainLobbyWidget, ClientInstance)
 		local f39_local0 = MainLobbyWidget:openPopup("Error", ClientInstance.controller)
 		f39_local0:setMessage(Engine.Localize("XBOXLIVE_NOGUESTACCOUNTS"))
 		f39_local0.anyControllerAllowed = true
-		return 
-	end 
+		return
+	end
 	if MainLobbyWidget.lobbyPane.body.lobbyList.selectedPlayerXuid ~= nil then
 		Engine.SetDvar("selectedPlayerXuid", MainLobbyWidget.lobbyPane.body.lobbyList.selectedPlayerXuid)
 		CoD.joinPlayer(ClientInstance.controller, MainLobbyWidget.lobbyPane.body.lobbyList.selectedPlayerXuid)
@@ -799,7 +799,7 @@ end
 CoD.MainLobby.elite_registration_ended = function (MainLobbyWidget, ClientInstance)
 	if UIExpression.IsGuest(ClientInstance.controller) == 1 then
 		MainLobbyWidget:openPopup("popup_guest_contentrestricted", ClientInstance.controller)
-		return 
+		return
 	elseif Engine.IsPlayerEliteRegistered(ClientInstance.controller) then
 		if Engine.ELaunchAppSearch(ClientInstance.controller) then
 			local f42_local0 = MainLobbyWidget:openPopup("EliteAppLaunchExecPopup", ClientInstance.controller)
@@ -812,7 +812,7 @@ end
 CoD.MainLobby.OpenEliteAppPopup = function (MainLobbyWidget, ClientInstance)
 	if UIExpression.IsGuest(ClientInstance.controller) == 1 then
 		MainLobbyWidget:openPopup("popup_guest_contentrestricted", ClientInstance.controller)
-		return 
+		return
 	elseif Engine.IsPlayerEliteRegistered(ClientInstance.controller) then
 		if Engine.ELaunchAppSearch(ClientInstance.controller) then
 			local f43_local0 = MainLobbyWidget:openPopup("EliteAppLaunchExecPopup", ClientInstance.controller)
@@ -825,22 +825,22 @@ CoD.MainLobby.OpenEliteAppPopup = function (MainLobbyWidget, ClientInstance)
 end
 
 CoD.MainLobby.OpenIMGUIServerBrowser = function(MainLobbyWidget, ClientInstance)
-	Engine.Exec(ClientInstance.controller, "plutoniumServers")
+	-- Engine.Exec(ClientInstance.controller, "plutoniumServers")
 
-	if true then
-		return
-	end
+	-- if true then
+	-- 	return
+	-- end
 
 	if CoD.MainMenu.IsGuestRestricted( MainLobbyWidget, ClientInstance ) == true then
-		return 
+		return
 	else
 		Engine.Exec( ClientInstance.controller, "loadcommonff" )
 		if Engine.CheckNetConnection() == false then
 			local f33_local0 = MainLobbyWidget:openPopup( "popup_net_connection", ClientInstance.controller )
 			f33_local0.callingMenu = MainLobbyWidget
-			return 
+			return
 		elseif CoD.MainMenu.OfflinePlayAvailable( MainLobbyWidget, ClientInstance ) == 0 then
-			return 
+			return
 		else
 			local parentObj = {
 				parent = "PartyLobby"

@@ -63,20 +63,23 @@ LUI.createMenu.LoadModModal = function( controller )
 
 	self.buttonList = CoD.ButtonList.new( {
 		leftAnchor = true,
-		rightAnchor = false,
+		rightAnchor = true,
 		left = 0,
-		right = CoD.ButtonList.DefaultWidth,
-		topAnchor = true,
+		right = 0,
+		topAnchor = false,
 		bottomAnchor = true,
-		top = CoD.textSize.Big + 10,
+		top = -CoD.ButtonPrompt.Height * 1 - CoD.CoD9Button.Height * 3 + 10,
 		bottom = 0
 	} )
 
-	self.yesButton = self.buttonList:addButton( Engine.Localize( "MENU_YES_CAPS" ) )
+	self.yesButton = self.buttonList:addButton( Engine.Localize( "MPUI_YES" ) )
 	self.yesButton:registerEventHandler( "button_action", CoD.Mods.LoadMod )
+	self.yesButton:processEvent( { name = "gain_focus" } )
+
+	self.cancelButton = self.buttonList:addButton( Engine.Localize( "MPUI_CANCEL" ) )
+	self.cancelButton:setActionEventName("button_prompt_back")
 
 	self:addElement( self.buttonList )
-	self.buttonList:processEvent( { name = "gain_focus" } )
 
 	Engine.PlaySound( "cac_loadout_edit_sel" )
 
