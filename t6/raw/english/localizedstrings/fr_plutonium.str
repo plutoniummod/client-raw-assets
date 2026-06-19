@@ -100,9 +100,6 @@ LANG_ENGLISH        "MODE STREAMER"
 REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "Cache les informations importantes sur le le réseau et les joueurs."
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "Modifier la zone de sécurité de l'ATH."
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "Quand l'option est activée, le télechargement de mods depuis le serveur est autorisé."
 

@@ -100,9 +100,6 @@ LANG_ENGLISH        "РЕЖИМ СТРИМЕРА"
 REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "Скрывает важную информацию о сети и игроках."
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "Настроить безопасную зону интерфейса."
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "Если включено, разрешена загрузка модов с сервера."
 

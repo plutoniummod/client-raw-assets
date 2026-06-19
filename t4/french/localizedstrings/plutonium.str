@@ -11,9 +11,6 @@ LANG_ENGLISH        "PLUTONIUM AMIS"
 REFERENCE           MENU_MINPLAYERS_COLON
 LANG_ENGLISH        "Joueurs Minimum:"
 
-REFERENCE           MENU_NEXT_MAP
-LANG_ENGLISH        "Map Suivante"
-
 REFERENCE           MENU_ROUND
 LANG_ENGLISH        "Manche"
 
@@ -25,18 +22,6 @@ LANG_ENGLISH        "Configuration de la manette par défaut"
 
 REFERENCE           MENU_SET_TACTICAL_LAYOUT
 LANG_ENGLISH        "Activer configuration Tactique"
-
-REFERENCE           MENU_LOOK_SENSITIVITY
-LANG_ENGLISH        "Sensibilité Vue"
-
-REFERENCE           MENU_INVERT_PITCH
-LANG_ENGLISH        "Caméra inversée"
-
-REFERENCE           MENU_AIM_ASSIST
-LANG_ENGLISH        "Aide à la visée"
-
-REFERENCE           MENU_RUMBLE
-LANG_ENGLISH        "Vibrations"
 
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Entrée brute"

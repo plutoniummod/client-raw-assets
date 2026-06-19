@@ -23,9 +23,6 @@ LANG_ENGLISH        "RAW INPUT"
 REFERENCE           PLATFORM_FOV_SCALE_CAPS
 LANG_ENGLISH        "SCALA FOV"
 
-REFERENCE           PLATFORM_CONTROLLER_VIBRATION_CAPS
-LANG_ENGLISH        "VIBRAZIONE GAMEPAD"
-
 REFERENCE           MENU_APPLY_RESTART_GAME
 LANG_ENGLISH        "Per applicare la modifica a questa impostazione, riavvia il gioco."
 

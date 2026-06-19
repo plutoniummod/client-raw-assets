@@ -60,7 +60,7 @@
 		// --------------------------- buttons ----------------------------
 		itemDef 
 		{
-      		text		"@PLUTONIUM_MENU_NEXT_MAP"
+      		text		"@MPUI_NEXT_MAP"
 					type		ITEM_TYPE_BUTTON
       		textscale	0.25
 					textstyle	ITEM_TEXTSTYLE_SHADOWED

@@ -100,9 +100,6 @@ LANG_ENGLISH        "ストリーマーモード"
 REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "重要なネットワーク情報やプレイヤー情報を隠します。"
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "HUDのセーフエリアを編集します。"
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "有効にすると、サーバーからのModダウンロードを許可します。"
 

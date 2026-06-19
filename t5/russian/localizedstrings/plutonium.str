@@ -23,9 +23,6 @@ LANG_ENGLISH        "НЕОБРАБОТАННЫЙ ВВОД"
 REFERENCE           PLATFORM_FOV_SCALE_CAPS
 LANG_ENGLISH        "МАСШТАБ ПОЛЯ ЗРЕНИЯ"
 
-REFERENCE           PLATFORM_CONTROLLER_VIBRATION_CAPS
-LANG_ENGLISH        "ВИБРАЦИЯ КОНТРОЛЛЕРА"
-
 REFERENCE           MENU_APPLY_RESTART_GAME
 LANG_ENGLISH        "Это настройка вступит в силу после перезапуска игры."
 

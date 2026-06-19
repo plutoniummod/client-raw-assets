@@ -100,9 +100,6 @@ LANG_ENGLISH        "MODO STREAMER"
 REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "Oculta información importante de red y del jugador."
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "Edita el área segura del HUD."
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "Si se activa, permite descargar mods desde el servidor."
 

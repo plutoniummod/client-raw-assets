@@ -98,9 +98,6 @@ LANG_ENGLISH        "TRYB STREAMERA"
 REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "Ukrywa informacje sieciowe i profilu gracza."
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "Edycja obszaru bezpiecznego HUD."
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "Pozwala na pobieranie modyfikacji bezpośrednio z serwera."
 

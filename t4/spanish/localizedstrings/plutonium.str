@@ -11,9 +11,6 @@ LANG_ENGLISH        "AMIGOS PLUTONIUM"
 REFERENCE           MENU_MINPLAYERS_COLON
 LANG_ENGLISH        "Jugadores Mínimos:"
 
-REFERENCE           MENU_NEXT_MAP
-LANG_ENGLISH        "Siguiente mapa"
-
 REFERENCE           MENU_ROUND
 LANG_ENGLISH        "Ronda"
 
@@ -25,18 +22,6 @@ LANG_ENGLISH        "Controles predeterminados del mando"
 
 REFERENCE           MENU_SET_TACTICAL_LAYOUT
 LANG_ENGLISH        "Configuración táctica"
-
-REFERENCE           MENU_LOOK_SENSITIVITY
-LANG_ENGLISH        "Sensibilidad"
-
-REFERENCE           MENU_INVERT_PITCH
-LANG_ENGLISH        "Invertir eje vertical"
-
-REFERENCE           MENU_AIM_ASSIST
-LANG_ENGLISH        "Ayuda de apuntado"
-
-REFERENCE           MENU_RUMBLE
-LANG_ENGLISH        "Vibración"
 
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Entrada directa"

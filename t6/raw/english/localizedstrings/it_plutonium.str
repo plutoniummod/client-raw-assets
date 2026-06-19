@@ -107,9 +107,6 @@ REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "Oscura informazioni sensibili del giocatore e network."
 // Why is it "networking" in English?
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "Modifica la zona sicura della HUD."
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "Quando è abilitato, permette di scaricare mods dal server."
 
