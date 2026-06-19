@@ -72,7 +72,7 @@
 		CHOICE_DVARSLIDER( 31, "@MENU_LOOK_SENSITIVITY", input_viewSensitivity, 1, 0.05, 5, ; )
 
 		CHOICE_DVARYESNO( 32, "@MENU_LOOK_INVERSION", input_invertPitch, ; )
-		CHOICE_DVARYESNO( 33, "@MENU_AIM_ASSIST", cg_aimAssistEnabled, ; )
+		CHOICE_DVARYESNO( 33, "@MENU_TARGET_ASSIST", cg_aimAssistEnabled, ; )
 		CHOICE_DVARYESNO( 34, "@MENU_CONTROLLER_VIBRATION", gpad_rumble, ; )
 
 

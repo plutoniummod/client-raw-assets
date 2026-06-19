@@ -194,9 +194,6 @@ LANG_ENGLISH        "Sin el arduo trabajo de los desarrolladores de Plutonium, l
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Conectarse al servidor."
 
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Ayuda de apuntado"
-
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Permite la ayuda de apuntado para todos los jugadores con mando."
 

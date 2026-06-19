@@ -208,10 +208,6 @@ LANG_ENGLISH        "Senza il grande impegno di tutti gli sviluppatori di Pluton
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Connettiti al server."
 
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Aim Assist"
-// Aim Assist si usa in Italiano.
-
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Permetti l'utilizzo della aim assist per tutti i giocatori con il gamepad."
 // Aim Assist si usa in Italiano. Gamepad è un termine conosciuto per descrivere il <controller> https://it.wikipedia.org/wiki/Gamepad

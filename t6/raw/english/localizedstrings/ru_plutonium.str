@@ -194,9 +194,6 @@ LANG_ENGLISH        "Без упорного труда разработчико
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Подключиться к серверу."
 
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Помощь в прицеливании"
-
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Разрешить помощь в прицеливании для всех игроков с контроллером."
 

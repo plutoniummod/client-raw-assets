@@ -194,9 +194,6 @@ LANG_ENGLISH        "Plutonium開発者たちのたゆまぬ努力がなけれ�
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "サーバーに接続します。"
 
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "エイムアシスト"
-
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "すべてのコントローラープレイヤーにエイムアシストオプションを許可します。"
 

@@ -192,9 +192,6 @@ LANG_ENGLISH        "Gdyby nie ciężka praca deweloperów Plutonium, nasze ukoc
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Połącz się z serwerem."
 
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Asysta Celowania"
-
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Pozwala na użycie asysty celowania dla wszystkich graczy na gamepadzie."
 

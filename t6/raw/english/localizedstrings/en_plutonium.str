@@ -194,9 +194,6 @@ LANG_ENGLISH        "Without the hard work of all of the Plutonium developers th
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Connect to the server."
 
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Aim Assist"
-
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Allow aim assist option for all controller players."
 

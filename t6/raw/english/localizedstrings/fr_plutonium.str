@@ -194,9 +194,6 @@ LANG_ENGLISH        "Sans l'énorme travail venant de tout les développeurs de 
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Connection au serveur."
 
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Aide à la visée"
-
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Autoriser l'option d'aide à la visée pour tout les joueurs manette."
 
