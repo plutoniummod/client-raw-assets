@@ -17,12 +17,6 @@ LANG_ENGLISH        "라운드"
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "라운드 시간"
 
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "기본 컨트롤러 레이아웃"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "전술 레이아웃 설정"
-
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "원시 입력"
 

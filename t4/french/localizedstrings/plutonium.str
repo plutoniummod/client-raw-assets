@@ -17,12 +17,6 @@ LANG_ENGLISH        "Manche"
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "Temps de Manche"
 
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "Configuration de la manette par défaut"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "Activer configuration Tactique"
-
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Entrée brute"
 

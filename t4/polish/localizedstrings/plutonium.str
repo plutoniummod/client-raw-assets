@@ -17,12 +17,6 @@ LANG_ENGLISH        "Runda"
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "Czas Rundy"
 
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "Domyślny Układ Gamepada"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "Włącz Taktyczny Układ"
-
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Surowe Dane Wejściowe"
 

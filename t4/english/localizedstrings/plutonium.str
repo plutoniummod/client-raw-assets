@@ -17,12 +17,6 @@ LANG_ENGLISH        "Round"
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "Round Time"
 
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "Default Controller Layout"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "Set Tactical Layout"
-
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Raw Input"
 

@@ -17,12 +17,6 @@ LANG_ENGLISH        "Ronda"
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "Tiempo de Ronda"
 
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "Controles predeterminados del mando"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "Configuración táctica"
-
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Entrada directa"
 

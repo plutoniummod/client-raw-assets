@@ -19,12 +19,6 @@ REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "Tempo di round"
 // Found it in a translation online
 
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "Schema predefinito del Gamepad"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "Imposta Schema Tattico"
-
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Raw Input"
 
