@@ -408,7 +408,7 @@ CoD.OptionsControls.CreateGamepadTab = function (gamepadTab, localClientIndex)
 		CoD.Options.Button_AddChoices_EnabledOrDisabled(targetAssistSelector)
 	end
 	CoD.Options.Button_AddChoices_EnabledOrDisabled(gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("MENU_LOOK_INVERSION_CAPS"), "input_invertpitch", Engine.Localize("MENU_LOOK_INVERSION_DESC")))
-	CoD.Options.Button_AddChoices_EnabledOrDisabled(gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("PLATFORM_CONTROLLER_VIBRATION_CAPS"), "gpad_rumble", Engine.Localize("PLATFORM_CONTROLLER_VIBRATION_DESC")))
+	CoD.Options.Button_AddChoices_EnabledOrDisabled(gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("MENU_CONTROLLER_VIBRATION_CAPS"), "gpad_rumble", Engine.Localize("MENU_CONTROLLER_VIBRATION_DESC")))
 	if UIExpression.IsDemoPlaying(localClientIndex) ~= 0 then
 		local theaterButtonLayout = gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("MENU_THEATER_BUTTON_LAYOUT_CAPS"), "demo_controllerconfig", Engine.Localize("MENU_THEATER_BUTTON_LAYOUT_DESC"))
 		CoD.ButtonLayout.AddChoices(theaterButtonLayout, localClientIndex)
