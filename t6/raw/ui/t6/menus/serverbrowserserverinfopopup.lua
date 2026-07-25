@@ -31,29 +31,33 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 	if CoD.ServerList.SelectedServer == nil then
 		self.buttonList:addText( Engine.Localize("SERVERBROWSER_NO_SERVER_SELECTED") )
 	else
-		self.connectButton = self.buttonList:addDvarLeftRightSelector( owner, Engine.Localize("SERVERBROWSER_CONNECT_TO_SERVER_CAPS"), "", Engine.Localize("SERVERBROWSER_CONNECT_TO_SERVER_HINT") )
+		self.connectButton = self.buttonList:addDvarLeftRightSelector( owner, Engine.Localize("MPUI_CONNECT_CAPS"), "", Engine.Localize("SERVERBROWSER_CONNECT_TO_SERVER_HINT") )
 		self.connectButton:registerEventHandler( "button_action", CoD.ServerBrowserServerInfo.Select )
 		self.connectButton:registerEventHandler( "ui_keyboard_input", CoD.ServerBrowserServerInfo.Join )
 
 		self.buttonList:addText("")
 
-		self.buttonList:addText(Engine.Localize("SERVERBROWSER_SERVER_NAME", CoD.ServerList.SelectedServer.hostname))
-		self.buttonList:addText(Engine.Localize("SERVERBROWSER_MAP", CoD.ServerList.SelectedServer.displayable_map))
-		self.buttonList:addText(Engine.Localize("SERVERBROWSER_GAME_MODE", CoD.ServerList.SelectedServer.displayable_gametype))
+		self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_SERVERNAME")) .. ": " .. CoD.ServerList.SelectedServer.hostname)
+		self.buttonList:addText(Engine.Localize("MENU_MAP_NAME_CAPS") .. ": " .. CoD.ServerList.SelectedServer.displayable_map)
+		self.buttonList:addText(Engine.Localize("MENU_GAME_MODE_CAPS") .. ": " .. CoD.ServerList.SelectedServer.displayable_gametype)
 
 		if CoD.isZombie then
-			self.buttonList:addText(Engine.Localize("SERVERBROWSER_ROUND", CoD.ServerList.SelectedServer.rounds))
+			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("ZOMBIE_ROUND")) .. ": " .. CoD.ServerList.SelectedServer.rounds)
 		else
-			self.buttonList:addText(Engine.Localize("SERVERBROWSER_HARDCORE", CoD.ServerList.SelectedServer.is_hardcore and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
+			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("MENU_RULES_HARDCORE")) .. ": " .. (CoD.ServerList.SelectedServer.has_scripts and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
 		end
 
-		self.buttonList:addText(Engine.Localize("SERVERBROWSER_PING", CoD.ServerList.SelectedServer.ping))
-		self.buttonList:addText(Engine.Localize("SERVERBROWSER_PASSWORD_PROTECTED", CoD.ServerList.SelectedServer.has_password and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
-		self.buttonList:addText(Engine.Localize("SERVERBROWSER_MODS", CoD.ServerList.SelectedServer.has_scripts and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
+		self.buttonList:addText(Engine.Localize("MENU_PING_CAPS") .. ": " .. CoD.ServerList.SelectedServer.ping)
+		self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_PASSWORD")) .. ": " .. (CoD.ServerList.SelectedServer.has_password and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
+		self.buttonList:addText(Engine.Localize("MENU_MODS_CAPS") .. ": " .. (CoD.ServerList.SelectedServer.has_scripts and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
 
 		self.buttonList:addText("")
 
-		self.buttonList:addText(Engine.Localize("SERVERBROWSER_PLAYERS", #CoD.ServerList.SelectedServer.players, CoD.ServerList.SelectedServer.maxplayers))
+		if CoD.ServerList.SelectedServer.bots > 0 then
+			self.buttonList:addText(Engine.Localize("MENU_PLAYERS_CAPS") .. ": " .. #CoD.ServerList.SelectedServer.players .. "/" .. CoD.ServerList.SelectedServer.maxplayers .. " (" .. CoD.ServerList.SelectedServer.bots .. ")")
+		else
+			self.buttonList:addText(Engine.Localize("MENU_PLAYERS_CAPS") .. ": " .. #CoD.ServerList.SelectedServer.players .. "/" .. CoD.ServerList.SelectedServer.maxplayers)
+		end
 
         local playersPerRow = 4
         local totalRows = math.ceil(#CoD.ServerList.SelectedServer.players / playersPerRow)
@@ -122,4 +126,3 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 	self:registerEventHandler( "button_prompt_back", CoD.ServerBrowserServerInfo.Back )
 	return self
 end
-

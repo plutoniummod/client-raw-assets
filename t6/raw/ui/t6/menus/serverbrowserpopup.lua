@@ -123,7 +123,6 @@ LUI.createMenu.ServerBrowser = function (LocalClientIndex)
 	}, LocalClientIndex)
 	self:addElement(self.serverList)
 
-	self.header:addSpacer(CoD.ServerListButton.TextOffset)
 	self.headers = {}
 	for Column = 1, #CoD.ServerList.Columns, 1 do
 		local HeaderButton = LUI.UIButton.new({
@@ -143,29 +142,46 @@ LUI.createMenu.ServerBrowser = function (LocalClientIndex)
 		HeaderButton:registerEventHandler("button_action", CoD.ServerBrowser.ClickHeader)
 		HeaderButton:registerEventHandler("button_up", HeaderButton.updateHeader)
 
-		local HeaderText = LUI.UIText.new({
-			left = 0,
-			top = 0,
-			right = CoD.ServerList.Columns[Column].Width,
-			bottom = CoD.textSize.Condensed,
-			leftAnchor = true,
-			topAnchor = true,
-			rightAnchor = false,
-			bottomAnchor = false,
-			font = CoD.fonts.Condensed
-		})
+		if CoD.ServerList.Columns[Column].Icon ~= "" then
+			local HeaderIcon = LUI.UIImage.new({
+				left = -CoD.textSize.Condensed / 2,
+				top = -CoD.textSize.Condensed / 2,
+				right = CoD.textSize.Condensed / 2,
+				bottom = CoD.textSize.Condensed / 2,
+				leftAnchor = false,
+				topAnchor = false,
+				rightAnchor = false,
+				bottomAnchor = false
+			})
 
-		HeaderText:setText(CoD.ServerList.Columns[Column].Text)
-		HeaderButton.headerText = HeaderText
-		HeaderButton:addElement(HeaderText)
+			HeaderIcon:setImage(RegisterMaterial(CoD.ServerList.Columns[Column].Icon))
+			HeaderButton.headerIcon = HeaderIcon
+			HeaderButton:addElement(HeaderIcon)
+		else
+			local HeaderText = LUI.UIText.new({
+				left = CoD.ServerListButton.TextOffset,
+				top = 0,
+				right = CoD.ServerList.Columns[Column].Width - CoD.ServerListButton.TextOffset,
+				bottom = CoD.textSize.Condensed,
+				leftAnchor = true,
+				topAnchor = true,
+				rightAnchor = false,
+				bottomAnchor = false,
+				font = CoD.fonts.Condensed
+			})
 
-		local _, textHeight, textWidth, ___ = GetTextDimensions(CoD.ServerList.Columns[Column].Text, CoD.fonts.Condensed, CoD.textSize.Condensed)
+			HeaderText:setText(CoD.ServerList.Columns[Column].Text)
+			HeaderButton.headerText = HeaderText
+			HeaderButton:addElement(HeaderText)
+		end
+
+		local _, _, textWidth, ___ = GetTextDimensions(CoD.ServerList.Columns[Column].Text, CoD.fonts.Condensed, CoD.textSize.Condensed)
 
 		local HeaderArrow = LUI.UIImage.new({
-			left = textWidth,
-			top = -textHeight / 2,
-			right = textWidth + textHeight,
-			bottom = textHeight / 2,
+			left = CoD.ServerListButton.TextOffset + textWidth,
+			top = -CoD.textSize.Condensed / 2,
+			right = CoD.ServerListButton.TextOffset + textWidth + CoD.textSize.Condensed,
+			bottom = CoD.textSize.Condensed / 2,
 			leftAnchor = true,
 			topAnchor = false,
 			rightAnchor = false,

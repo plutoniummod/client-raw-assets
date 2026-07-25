@@ -34,20 +34,47 @@ CoD.ServerListButton.new = function (defaultAnimationState, LocalClientIndex, ac
 		spacing = CoD.ServerList.ColumnSpacing
 	})
 
-	ButtonColumns:addSpacer(CoD.ServerListButton.TextOffset)
 	ServerListButton.Columns = {}
 	for Column = 1, #CoD.ServerList.Columns, 1 do
-		ServerListButton.Columns[Column] = LUI.UIText.new({
-			left = 0,
-			top = -CoD.ServerListButton.TextHeight / 2,
-			right = CoD.ServerList.Columns[Column].Width,
-			bottom = CoD.ServerListButton.TextHeight / 2,
-			leftAnchor = true,
-			topAnchor = false,
-			rightAnchor = false,
-			bottomAnchor = false,
-			font = CoD.ServerListButton.Font,
-		})
+		ServerListButton.Columns[Column] = LUI.UIElement.new({
+            left = 0,
+            top = -CoD.ServerListButton.TextHeight / 2,
+            right = CoD.ServerList.Columns[Column].Width,
+            bottom = CoD.ServerListButton.TextHeight / 2,
+            leftAnchor = true,
+            topAnchor = false,
+            rightAnchor = false,
+            bottomAnchor = false
+        })
+
+		if CoD.ServerList.Columns[Column].Icon ~= "" then
+			ServerListButton.Columns[Column].Icon = LUI.UIImage.new({
+				left = -CoD.ServerListButton.TextHeight / 2,
+				top = -CoD.ServerListButton.TextHeight / 2,
+				right = CoD.ServerListButton.TextHeight / 2,
+				bottom = CoD.ServerListButton.TextHeight / 2,
+				leftAnchor = false,
+				topAnchor = false,
+				rightAnchor = false,
+				bottomAnchor = false
+			})
+
+			ServerListButton.Columns[Column]:addElement(ServerListButton.Columns[Column].Icon)
+		else
+			ServerListButton.Columns[Column].Text = LUI.UIText.new({
+				left = CoD.ServerListButton.TextOffset,
+				top = -CoD.ServerListButton.TextHeight / 2,
+				right = CoD.ServerList.Columns[Column].Width - CoD.ServerListButton.TextOffset,
+				bottom = CoD.ServerListButton.TextHeight / 2,
+				leftAnchor = true,
+				topAnchor = false,
+				rightAnchor = false,
+				bottomAnchor = false,
+				font = CoD.ServerListButton.Font
+			})
+
+			ServerListButton.Columns[Column]:addElement(ServerListButton.Columns[Column].Text)
+		end
 
 		ButtonColumns:addElement(ServerListButton.Columns[Column])
 	end
