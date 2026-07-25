@@ -107,9 +107,6 @@ REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "Oscura informazioni sensibili del giocatore e network."
 // Why is it "networking" in English?
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "Modifica la zona sicura della HUD."
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "Quando è abilitato, permette di scaricare mods dal server."
 
@@ -239,10 +236,6 @@ LANG_ENGLISH        "Senza il grande impegno di tutti gli sviluppatori di Pluton
 
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Connettiti al server."
-
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Aim Assist"
-// Aim Assist si usa in Italiano.
 
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Permetti l'utilizzo della aim assist per tutti i giocatori con il gamepad."

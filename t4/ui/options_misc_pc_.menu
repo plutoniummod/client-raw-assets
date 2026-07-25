@@ -60,20 +60,20 @@
 		CHOICE_BIND( 25, "@MENU_SHOW_OBJECTIVES_SCORES", "+scores", ; )
 		CHOICE_BIND( 26, "@MENU_ACCEPT_INVITE", "acceptInvitation", ; )
 		CHOICE_BIND_VIS( 27, "@MENU_QUICK_SAVE", "savegame_lastcommit", ;, when( !dvarbool( ui_multiplayer ) ),!dvarbool( ui_multiplayer ) )
-		CHOICE_BUTTON(29, "@PLUTONIUM_MENU_DEFAULT_CONTROLLER_LAYOUT", exec "exec default_controller.cfg";)
-		CHOICE_BUTTON(30, "@PLUTONIUM_MENU_SET_TACTICAL_LAYOUT", exec "bind BUTTON_B +melee;bind2 BUTTON_B +handbrake;bind BUTTON_RSTICK +stance";)
+		CHOICE_DVARYESNO( 29, "@MENU_LOOK_INVERSION", input_invertPitch, ; )
+		CHOICE_DVARYESNO( 30, "@MENU_CONTROLLER_VIBRATION", gpad_rumble, ; )
+		CHOICE_DVARSTRINGLIST( 31, "@MENU_THUMBSTICK_LAYOUT", gpad_sticksConfig, { "@MENU_DEFAULT"; "thumbstick_default"; "@MENU_SOUTHPAW"; "thumbstick_southpaw"; "@MENU_LEGACY"; "thumbstick_legacy"; "@MENU_LEGACY_SOUTHPAW"; "thumbstick_legacysouthpaw"; }, execnow "bindgpsticksconfigs" )
+		CHOICE_DVARSTRINGLIST( 32, "@MENU_BUTTON_LAYOUT", gpad_buttonsConfig, { "@MENU_DEFAULT"; "buttons_default_alt"; "@MENU_TACTICAL"; "buttons_experimental_alt"; "@MENU_LEFTY"; "buttons_lefty_alt"; "@PATCH_NOMAD"; "buttons_nomad"; }, execnow "bindgpbuttonsconfigs" )
 
 #undef CHOICE_SIZE_X
 #define CHOICE_SIZE_X			250
-		CHOICE_DVAREDIT( 31, "", input_viewSensitivity, ; )
+		CHOICE_DVAREDIT( 33, "", input_viewSensitivity, ; )
 #undef CHOICE_SIZE_X
 #define CHOICE_SIZE_X			150
 
-		CHOICE_DVARSLIDER( 31, "@PLUTONIUM_MENU_LOOK_SENSITIVITY", input_viewSensitivity, 1, 0.05, 5, ; )
+		CHOICE_DVARSLIDER( 33, "@MENU_LOOK_SENSITIVITY", input_viewSensitivity, 1, 0.05, 5, ; )
 
-		CHOICE_DVARYESNO( 32, "@PLUTONIUM_MENU_INVERT_PITCH", input_invertPitch, ; )
-		CHOICE_DVARYESNO( 33, "@PLUTONIUM_MENU_AIM_ASSIST", cg_aimAssistEnabled, ; )
-		CHOICE_DVARYESNO( 34, "@PLUTONIUM_MENU_RUMBLE", gpad_rumble, ; )
+		CHOICE_DVARYESNO( 34, "@MENU_TARGET_ASSIST", cg_aimAssistEnabled, ; )
 
 
 		//CHOICE_BACK( "@MENU_BACK", close self )

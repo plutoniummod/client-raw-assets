@@ -396,14 +396,6 @@ CoD.OptionsControls.CreateGamepadTab = function (gamepadTab, localClientIndex)
 	gamepadTab.buttonList = gamepadButtonList
 	gamepadButtonListContainer:addElement(gamepadButtonList)
 	CoD.OptionsControls.Button_AddChoices_Gamepad(gamepadButtonList:addHardwareProfileLeftRightSelector(Engine.Localize("PLATFORM_ENABLE_GAMEPAD_CAPS"), "gpad_enabled"))
-	if UIExpression.IsInGame() == 1 and UIExpression.DvarBool(nil, "sv_allowAimAssist") == 0 then
-		local targetAssistSelector = gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("MENU_TARGET_ASSIST_CAPS"), "somethingalwaysfalse", Engine.Localize("MENU_TARGET_ASSIST_DISABLED_INGAME"))
-		targetAssistSelector:lock()
-		CoD.Options.Button_AddChoices_EnabledOrDisabled(targetAssistSelector)
-	else
-		local targetAssistSelector = gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("MENU_TARGET_ASSIST_CAPS"), "input_targetAssist", Engine.Localize("MENU_TARGET_ASSIST_DESC"))	
-		CoD.Options.Button_AddChoices_EnabledOrDisabled(targetAssistSelector)
-	end
 	CoD.Options.Button_AddChoices_EnabledOrDisabled(gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("MENU_LOOK_INVERSION_CAPS"), "input_invertpitch", Engine.Localize("MENU_LOOK_INVERSION_DESC")))
 	CoD.Options.Button_AddChoices_EnabledOrDisabled(gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("PLATFORM_CONTROLLER_VIBRATION_CAPS"), "gpad_rumble", Engine.Localize("PLATFORM_CONTROLLER_VIBRATION_DESC")))
 	if UIExpression.IsDemoPlaying(localClientIndex) ~= 0 then
@@ -422,14 +414,25 @@ CoD.OptionsControls.CreateGamepadTab = function (gamepadTab, localClientIndex)
 		gamepadButtonsOptions:registerEventHandler("button_action", CoD.OptionsControls.Button_ButtonLayout)
 	end
 	CoD.OptionsControls.Button_AddChoices_LookSensitivity(gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("MENU_LOOK_SENSITIVITY_CAPS"), "input_viewSensitivity", Engine.Localize("PLATFORM_LOOK_SENSITIVITY_DESC")))
-	local GamepadDeadzoneMin = gamepadButtonList:addDvarLeftRightSlider(localClientIndex, Engine.Localize("MENU_GPAD_STICK_DEADZONE_MAX_CAPS"), "gpad_stick_deadzone_max", 0.01, 1, Engine.Localize("MENU_GPAD_STICK_DEADZONE_MAX_HINT"))
+	if UIExpression.IsInGame() == 1 and UIExpression.DvarBool(nil, "sv_allowAimAssist") == 0 then
+		local targetAssistSelector = gamepadButtonList:addButton(Engine.Localize("MENU_TARGET_ASSIST_CAPS"), Engine.Localize("MENU_TARGET_ASSIST_DISABLED_INGAME"))
+		if CoD.isZombie then
+			targetAssistSelector:disable()
+		else
+			targetAssistSelector:lock()
+		end
+	else
+		local targetAssistSelector = gamepadButtonList:addProfileLeftRightSelector(localClientIndex, Engine.Localize("MENU_TARGET_ASSIST_CAPS"), "input_targetAssist", Engine.Localize("MENU_TARGET_ASSIST_DESC"))	
+		CoD.Options.Button_AddChoices_EnabledOrDisabled(targetAssistSelector)
+	end
+	local GamepadDeadzoneMax = gamepadButtonList:addDvarLeftRightSlider(localClientIndex, Engine.Localize("MENU_GPAD_STICK_DEADZONE_MAX_CAPS"), "gpad_stick_deadzone_max", 0.01, 1, Engine.Localize("MENU_GPAD_STICK_DEADZONE_MAX_HINT"))
+	GamepadDeadzoneMax:setNumericDisplayFormatString("%.2f")
+	GamepadDeadzoneMax:setRoundToFraction(0.01)
+	GamepadDeadzoneMax:setBarSpeed(0.20)
+	local GamepadDeadzoneMin = gamepadButtonList:addDvarLeftRightSlider(localClientIndex, Engine.Localize("MENU_GPAD_STICK_DEADZONE_MIN_CAPS"), "gpad_stick_deadzone_min", 0.2, 1, Engine.Localize("MENU_GPAD_STICK_DEADZONE_MIN_HINT"))
 	GamepadDeadzoneMin:setNumericDisplayFormatString("%.2f")
 	GamepadDeadzoneMin:setRoundToFraction(0.01)
 	GamepadDeadzoneMin:setBarSpeed(0.20)
-	local FOVScaleSlider = gamepadButtonList:addDvarLeftRightSlider(localClientIndex, Engine.Localize("MENU_GPAD_STICK_DEADZONE_MIN_CAPS"), "gpad_stick_deadzone_min", 0.2, 1, Engine.Localize("MENU_GPAD_STICK_DEADZONE_MIN_HINT"))
-	FOVScaleSlider:setNumericDisplayFormatString("%.2f")
-	FOVScaleSlider:setRoundToFraction(0.01)
-	FOVScaleSlider:setBarSpeed(0.20)
 	return gamepadButtonListContainer
 end
 

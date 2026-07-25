@@ -23,9 +23,6 @@ LANG_ENGLISH        "ENTRÉE BRUTE"
 REFERENCE           PLATFORM_FOV_SCALE_CAPS
 LANG_ENGLISH        "ÉCHELLE DU CHAMP DE VISION"
 
-REFERENCE           PLATFORM_CONTROLLER_VIBRATION_CAPS
-LANG_ENGLISH        "VIBRATIONS DE LA MANETTE"
-
 REFERENCE           MENU_APPLY_RESTART_GAME
 LANG_ENGLISH        "Un redémarage du jeu est nécessaire pour que les changements prennent effet."
 

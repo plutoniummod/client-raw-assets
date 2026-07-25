@@ -100,9 +100,6 @@ LANG_ENGLISH        "STREAMER-MODUS"
 REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "Versteckt wichtige Netzwerk- und Spielerinformationen."
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "HUD-Sicherheitsbereich bearbeiten."
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "Wenn aktiviert, wird das Herunterladen von Mods vom Server erlaubt."
 
@@ -229,9 +226,6 @@ LANG_ENGLISH        "Ohne die harte Arbeit aller Plutonium-Entwickler wären die
 
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Mit dem Server verbinden."
-
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Zielhilfe"
 
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Erlaubt Zielhilfe für alle Controller-Spieler."

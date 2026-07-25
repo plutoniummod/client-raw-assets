@@ -100,9 +100,6 @@ LANG_ENGLISH        "MODE STREAMER"
 REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "Cache les informations importantes sur le le réseau et les joueurs."
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "Modifier la zone de sécurité de l'ATH."
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "Quand l'option est activée, le télechargement de mods depuis le serveur est autorisé."
 
@@ -226,9 +223,6 @@ LANG_ENGLISH        "Sans l'énorme travail venant de tout les développeurs de 
 
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Connection au serveur."
-
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Aide à la visée"
 
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Autoriser l'option d'aide à la visée pour tout les joueurs manette."

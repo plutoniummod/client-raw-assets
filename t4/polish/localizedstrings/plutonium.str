@@ -11,32 +11,11 @@ LANG_ENGLISH        "Przyjaciele Plutonium"
 REFERENCE           MENU_MINPLAYERS_COLON
 LANG_ENGLISH        "Minimum Graczy:"
 
-REFERENCE           MENU_NEXT_MAP
-LANG_ENGLISH        "Następna Mapa"
-
 REFERENCE           MENU_ROUND
 LANG_ENGLISH        "Runda"
 
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "Czas Rundy"
-
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "Domyślny Układ Gamepada"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "Włącz Taktyczny Układ"
-
-REFERENCE           MENU_LOOK_SENSITIVITY
-LANG_ENGLISH        "Czułość Kamery"
-
-REFERENCE           MENU_INVERT_PITCH
-LANG_ENGLISH        "Odwróć Oś Pionową"
-
-REFERENCE           MENU_AIM_ASSIST
-LANG_ENGLISH        "Asysta Celowania"
-
-REFERENCE           MENU_RUMBLE
-LANG_ENGLISH        "Wibracje Gamepada"
 
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Surowe Dane Wejściowe"

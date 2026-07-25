@@ -11,32 +11,11 @@ LANG_ENGLISH        "플루토늄 친구들"
 REFERENCE           MENU_MINPLAYERS_COLON
 LANG_ENGLISH        "최소 플레이어 수:"
 
-REFERENCE           MENU_NEXT_MAP
-LANG_ENGLISH        "다음 맵"
-
 REFERENCE           MENU_ROUND
 LANG_ENGLISH        "라운드"
 
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "라운드 시간"
-
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "기본 컨트롤러 레이아웃"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "전술 레이아웃 설정"
-
-REFERENCE           MENU_LOOK_SENSITIVITY
-LANG_ENGLISH        "조준 감도"
-
-REFERENCE           MENU_INVERT_PITCH
-LANG_ENGLISH        "상하 반전"
-
-REFERENCE           MENU_AIM_ASSIST
-LANG_ENGLISH        "조준 보조"
-
-REFERENCE           MENU_RUMBLE
-LANG_ENGLISH        "진동"
 
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "원시 입력"

@@ -644,7 +644,7 @@ CoD.OptionsSettings.CreateAdvancedTab = function (AdvancedTab, LocalClientIndex)
 	CoD.OptionsSettings.Button_AddChoices_StreamerMode(AdvancedTabButtonList:addHardwareProfileLeftRightSelector(Engine.Localize("MENU_STREAMER_MODE_CAPS"), "cl_enableStreamerMode", Engine.Localize("MENU_STREAMER_MODE_HINT")))
 	AdvancedTabButtonList:addSpacer(CoD.CoD9Button.Height / 2)
 	
-	local SafeAreaButton = AdvancedTabButtonList:addButton(Engine.Localize("MENU_SAFE_AREA_ADJUSTMENT_CAPS"), Engine.Localize("MENU_SAFE_AREA_ADJUSTMENT_HINT"))
+	local SafeAreaButton = AdvancedTabButtonList:addButton(Engine.Localize("MENU_SAFE_AREA_ADJUSTMENT_CAPS"), Engine.Localize("MENU_SAFE_AREA_DESC"))
 	SafeAreaButton:setActionEventName("open_safe_area")
 	
 	return AdvancedTabContainer

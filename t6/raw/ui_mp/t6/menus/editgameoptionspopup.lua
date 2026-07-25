@@ -8,7 +8,7 @@ end
 
 local GameOptionsDvars = {
 	allowAimAssist = {
-		name = Engine.Localize("MENU_TARGET_ASSIST"),
+		name = Engine.Localize("MENU_TARGET_ASSIST_CAPS"),
 		setting = "sv_allowAimAssist",
 		hintText = Engine.Localize("MENU_TARGET_ASSIST_HINT"),
 		labels = CoD.GameOptions.AllowedDisallowedLabels,

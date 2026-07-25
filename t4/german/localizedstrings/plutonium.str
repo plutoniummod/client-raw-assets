@@ -11,32 +11,11 @@ LANG_ENGLISH        "PLUTONIUM FREUNDE"
 REFERENCE           MENU_MINPLAYERS_COLON
 LANG_ENGLISH        "Min. Spieler:"
 
-REFERENCE           MENU_NEXT_MAP
-LANG_ENGLISH        "Nächste Map"
-
 REFERENCE           MENU_ROUND
 LANG_ENGLISH        "Runde"
 
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "Rundenzeit"
-
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "Standard Controller-Layout"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "Taktisches Layout setzen"
-
-REFERENCE           MENU_LOOK_SENSITIVITY
-LANG_ENGLISH        "Blickempfindlichkeit"
-
-REFERENCE           MENU_INVERT_PITCH
-LANG_ENGLISH        "Pitch umkehren"
-
-REFERENCE           MENU_AIM_ASSIST
-LANG_ENGLISH        "Zielhilfe"
-
-REFERENCE           MENU_RUMBLE
-LANG_ENGLISH        "Vibration"
 
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Direkteingabe"

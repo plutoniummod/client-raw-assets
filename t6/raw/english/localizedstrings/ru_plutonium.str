@@ -100,9 +100,6 @@ LANG_ENGLISH        "РЕЖИМ СТРИМЕРА"
 REFERENCE           MENU_STREAMER_MODE_HINT
 LANG_ENGLISH        "Скрывает важную информацию о сети и игроках."
 
-REFERENCE           MENU_SAFE_AREA_ADJUSTMENT_HINT
-LANG_ENGLISH        "Настроить безопасную зону интерфейса."
-
 REFERENCE           MENU_ALLOW_DOWNLOAD_HINT
 LANG_ENGLISH        "Если включено, разрешена загрузка модов с сервера."
 
@@ -226,9 +223,6 @@ LANG_ENGLISH        "Без упорного труда разработчико
 
 REFERENCE           SERVER_CONNECT
 LANG_ENGLISH        "Подключиться к серверу."
-
-REFERENCE           MENU_TARGET_ASSIST
-LANG_ENGLISH        "Помощь в прицеливании"
 
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Разрешить помощь в прицеливании для всех игроков с контроллером."

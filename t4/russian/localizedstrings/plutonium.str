@@ -11,32 +11,11 @@ LANG_ENGLISH        "PLUTONIUM ДРУЗЬЯ"
 REFERENCE           MENU_MINPLAYERS_COLON
 LANG_ENGLISH        "Мин. Игроков:"
 
-REFERENCE           MENU_NEXT_MAP
-LANG_ENGLISH        "Следующая карта"
-
 REFERENCE           MENU_ROUND
 LANG_ENGLISH        "Раунд"
 
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "Время в раунде"
-
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "Стандартная раскладка контроллера"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "Тактическая раскладка"
-
-REFERENCE           MENU_LOOK_SENSITIVITY
-LANG_ENGLISH        "Чувствительность взгляда"
-
-REFERENCE           MENU_INVERT_PITCH
-LANG_ENGLISH        "Инвертировать вертикальную ось"
-
-REFERENCE           MENU_AIM_ASSIST
-LANG_ENGLISH        "Помощь в прицеливании"
-
-REFERENCE           MENU_RUMBLE
-LANG_ENGLISH        "Вибрация контроллера"
 
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "НЕОБРАБОТАННЫЙ ВВОД"

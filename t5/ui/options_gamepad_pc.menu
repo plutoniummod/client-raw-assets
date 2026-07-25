@@ -476,8 +476,15 @@
 													CLEARUIHINT,
 													( dvarbool( gpad_enabled ) ) )
 
+		FRAME_CHOICE_DVARFLOATLIST_FOCUS_VIS(		25, "@MENU_CONTROLLER_VIBRATION_CAPS", gpad_rumble,
+													{ "@MENU_DISABLED_CAPS" 0 "@MENU_ENABLED_CAPS" 1 }, 
+													;,
+													;,
+													CLEARUIHINT,
+													( dvarbool( gpad_enabled ) ) )
+
 		// Stick Layout
-		FRAME_CHOICE_DVARSTRINGLIST_FOCUS_VIS(		25, "@PLATFORM_STICK_LAYOUT_CAPS", gpad_sticksConfig, 
+		FRAME_CHOICE_DVARSTRINGLIST_FOCUS_VIS(		26, "@PLATFORM_STICK_LAYOUT_CAPS", gpad_sticksConfig, 
 													{ "@MENU_DEFAULT_CAPS" thumbstick_default "@MENU_SOUTHPAW_CAPS" thumbstick_southpaw
 													"@MENU_LEGACY_CAPS" thumbstick_legacy "@MENU_LEGACY_SOUTHPAW_CAPS" thumbstick_legacysouthpaw }, 
 													STICK_LAYOUT_ACTION, 
@@ -486,7 +493,7 @@
 													( dvarbool( gpad_enabled ) ) )
 		
 		// Button Layout
-		FRAME_CHOICE_DVARSTRINGLIST_FOCUS_VIS(		26, "@PLATFORM_BUTTON_LAYOUT_CAPS", gpad_buttonsConfig, 
+		FRAME_CHOICE_DVARSTRINGLIST_FOCUS_VIS(		27, "@PLATFORM_BUTTON_LAYOUT_CAPS", gpad_buttonsConfig, 
 													{ "@MENU_DEFAULT_CAPS" buttons_default "@MENU_TACTICAL_CAPS" buttons_experimental "@MENU_LEFTY_CAPS" buttons_lefty 
 													"@MENU_NOMAD" buttons_nomad "@MENU_CHARLIE_CAPS" buttons_charlie }, 
 													BUTTON_LAYOUT_ACTION, 
@@ -495,7 +502,7 @@
 													( dvarbool( gpad_enabled ) ) )
 													
 		// Look Sensitivity
-		FRAME_CHOICE_DVARFLOATLIST_FOCUS_VIS(		27, "@PLATFORM_LOOK_SENSITIVITY_CAPS", input_viewSensitivity,
+		FRAME_CHOICE_DVARFLOATLIST_FOCUS_VIS(		28, "@PLATFORM_LOOK_SENSITIVITY_CAPS", input_viewSensitivity,
 													{ "@MENU_SENSITIVITY_LOW_CAPS" SENSITIVITY_1 "@MENU_SENSITIVITY_MEDIUM_CAPS" SENSITIVITY_2 "3" SENSITIVITY_3
 													"@MENU_SENSITIVITY_HIGH_CAPS" SENSITIVITY_4 "5" SENSITIVITY_5 "6" SENSITIVITY_6 "@MENU_SENSITIVITY_VERY_HIGH_CAPS" SENSITIVITY_7
 													"8" SENSITIVITY_8 "9" SENSITIVITY_9 "@MENU_SENSITIVITY_INSANE_CAPS" SENSITIVITY_10 },
@@ -504,14 +511,7 @@
 													CLEARUIHINT,
 													( dvarbool( gpad_enabled ) ) )
 
-		FRAME_CHOICE_DVARFLOATLIST_FOCUS_VIS(		28, "@MENU_TARGET_ASSIST_CAPS", cg_aimAssistEnabled,
-													{ "@MENU_DISABLED_CAPS" 0 "@MENU_ENABLED_CAPS" 1 }, 
-													;,
-													;,
-													CLEARUIHINT,
-													( dvarbool( gpad_enabled ) ) )
-
-		FRAME_CHOICE_DVARFLOATLIST_FOCUS_VIS(		29, "@PLUTONIUM_PLATFORM_CONTROLLER_VIBRATION_CAPS", gpad_rumble,
+		FRAME_CHOICE_DVARFLOATLIST_FOCUS_VIS(		29, "@MENU_TARGET_ASSIST_CAPS", cg_aimAssistEnabled,
 													{ "@MENU_DISABLED_CAPS" 0 "@MENU_ENABLED_CAPS" 1 }, 
 													;,
 													;,

@@ -11,9 +11,6 @@ LANG_ENGLISH        "AMICI PLUTONIUM"
 REFERENCE           MENU_MINPLAYERS_COLON
 LANG_ENGLISH        "Minimo Giocatori:"
 
-REFERENCE           MENU_NEXT_MAP
-LANG_ENGLISH        "Mappa sucessiva"
-
 REFERENCE           MENU_ROUND
 LANG_ENGLISH        "Round"
 // #same support in OAT when
@@ -21,24 +18,6 @@ LANG_ENGLISH        "Round"
 REFERENCE           MENU_ROUND_TIME
 LANG_ENGLISH        "Tempo di round"
 // Found it in a translation online
-
-REFERENCE           MENU_DEFAULT_CONTROLLER_LAYOUT
-LANG_ENGLISH        "Schema predefinito del Gamepad"
-
-REFERENCE           MENU_SET_TACTICAL_LAYOUT
-LANG_ENGLISH        "Imposta Schema Tattico"
-
-REFERENCE           MENU_LOOK_SENSITIVITY
-LANG_ENGLISH        "Sensibilità sguardo"
-
-REFERENCE           MENU_INVERT_PITCH
-LANG_ENGLISH        "Invertire il Pitch (Beccheggio)"
-
-REFERENCE           MENU_AIM_ASSIST
-LANG_ENGLISH        "Assistenza alla Mira"
-
-REFERENCE           MENU_RUMBLE
-LANG_ENGLISH        "Rombo"
 
 REFERENCE           MENU_RAW_INPUT
 LANG_ENGLISH        "Raw Input"

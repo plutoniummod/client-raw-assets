@@ -23,9 +23,6 @@ LANG_ENGLISH        "生の入力"
 REFERENCE           PLATFORM_FOV_SCALE_CAPS
 LANG_ENGLISH        "FOVスケール"
 
-REFERENCE           PLATFORM_CONTROLLER_VIBRATION_CAPS
-LANG_ENGLISH        "コントローラーの振動"
-
 REFERENCE           MENU_APPLY_RESTART_GAME
 LANG_ENGLISH        "この設定はゲーム再起動後に適用されます。"
 
