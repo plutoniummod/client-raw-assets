@@ -111,8 +111,12 @@ CoD.ServerList.JoinServer = function (self, event)
 		end
 	end
 
-	Engine.Exec(event.controller, "stopRefreshServers\n")
-	Engine.Exec(event.controller, "connect \"" .. CoD.ServerList.SelectedServer.ip .. ":" .. CoD.ServerList.SelectedServer.port .. "\"\n")
+	if not CoD.ServerList.Joining then
+		CoD.ServerList.Joining = true
+
+		Engine.Exec(event.controller, "stopRefreshServers\n")
+		Engine.Exec(event.controller, "connect \"" .. CoD.ServerList.SelectedServer.ip .. ":" .. CoD.ServerList.SelectedServer.port .. "\"\n")
+	end
 end
 
 CoD.ServerList.ButtonPromptRefresh = function (self, event)
