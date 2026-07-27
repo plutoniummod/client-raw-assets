@@ -49,7 +49,16 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 
 		self.buttonList:addText(Engine.Localize("MENU_PING_CAPS") .. ": " .. CoD.ServerList.SelectedServer.ping)
 		self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_PASSWORD")) .. ": " .. (CoD.ServerList.SelectedServer.has_password and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
-		self.buttonList:addText(Engine.Localize("MENU_MODS_CAPS") .. ": " .. (CoD.ServerList.SelectedServer.has_scripts and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
+
+		local modName = CoD.ServerList.SelectedServer.mod
+
+		if modName ~= "" then
+            if CoD.ServerList.SelectedServer.displayable_mod ~= "" then
+                modName = CoD.ServerList.SelectedServer.displayable_mod
+            end
+
+            self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_MOD")) .. ": " .. modName)
+		end
 
 		self.buttonList:addText("")
 

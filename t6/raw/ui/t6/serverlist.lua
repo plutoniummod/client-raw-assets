@@ -452,6 +452,8 @@ CoD.ServerList.new = function (defaultAnimationState, LocalClientIndex)
 
 		CoD.ServerList.ResetDvars()
 
+		Engine.GetModCount() -- need this for .displayable_mod to work
+
 		self:processEvent( {
 			name = "serverlist_jumpToTop"
 		} )
