@@ -825,12 +825,6 @@ CoD.MainLobby.OpenEliteAppPopup = function (MainLobbyWidget, ClientInstance)
 end
 
 CoD.MainLobby.OpenIMGUIServerBrowser = function(MainLobbyWidget, ClientInstance)
-	Engine.Exec(ClientInstance.controller, "plutoniumServers")
-
-	if true then
-		return
-	end
-
 	if CoD.MainMenu.IsGuestRestricted( MainLobbyWidget, ClientInstance ) == true then
 		return 
 	else
