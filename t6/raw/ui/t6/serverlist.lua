@@ -166,6 +166,21 @@ CoD.ServerList.SetDisplayables = function(server)
 					server.displayable_map = server.location
 				end
 			end
+
+			-- .displayable_map can be empty if .location is empty which happens if server hasn't been updated
+			if server.displayable_map == "" then
+				local reference_map = UIExpression.TableLookup(nil, CoD.mapsTable, 0, server.map, 3)
+
+				if reference_map == "" then
+					server.displayable_map = server.map
+				else
+					server.displayable_map = Engine.Localize(reference_map)
+
+					if string.find(server.displayable_map, reference_map) then
+						server.displayable_map = server.map
+					end
+				end
+			end
 		end
 	else
 		local reference_gametype = UIExpression.TableLookup(nil, CoD.gametypesTable, 0, 0, 1, server.gametype, 7)
