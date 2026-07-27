@@ -44,7 +44,7 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 		if CoD.isZombie then
 			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("ZOMBIE_ROUND")) .. ": " .. CoD.ServerList.SelectedServer.rounds)
 		else
-			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("MENU_RULES_HARDCORE")) .. ": " .. (CoD.ServerList.SelectedServer.has_scripts and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
+			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("MENU_RULES_HARDCORE")) .. ": " .. (CoD.ServerList.SelectedServer.is_hardcore and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
 		end
 
 		self.buttonList:addText(Engine.Localize("MENU_PING_CAPS") .. ": " .. CoD.ServerList.SelectedServer.ping)
