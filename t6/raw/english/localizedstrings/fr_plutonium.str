@@ -137,40 +137,19 @@ LANG_ENGLISH        "Glisser vers le haut / bas"
 
 // SERVERBROWSERFILTERSPOPUP
 
-REFERENCE           MENU_SERVER_BROWSER_FILTER
-LANG_ENGLISH        "Entrer un filtre"
-
-REFERENCE           MENU_SERVER_BROWSER_SEARCH_FILTER_CAPS
-LANG_ENGLISH        "CHERCHER UN FILTRE"
-
 REFERENCE           MENU_SERVER_BROWSER_SEARCH_FILTER_HINT
 LANG_ENGLISH        "Entrez  texte pour filtrer la liste du serveur."
-
-REFERENCE           MENU_SERVER_BROWSER_DISPLAY_EMPTY_CAPS
-LANG_ENGLISH        "AFFICHER LES SERVEURS VIDES"
 
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_EMPTY_HINT
 LANG_ENGLISH        "Afficher les serveurs vides sur la liste des serveurs."
 
-REFERENCE           MENU_SERVER_BROWSER_DISPLAY_FULL_CAPS
-LANG_ENGLISH        ""
-
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_FULL_HINT
-LANG_ENGLISH        ""
-
-REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_CAPS
 LANG_ENGLISH        ""
 
 REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
 LANG_ENGLISH        ""
 
-REFERENCE           MENU_SERVER_BROWSER_MAX_PING_CAPS
-LANG_ENGLISH        ""
-
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
-LANG_ENGLISH        ""
-
-REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_CAPS
 LANG_ENGLISH        ""
 
 REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_HINT
@@ -181,9 +160,6 @@ LANG_ENGLISH        ""
 REFERENCE           SERVERBROWSER_NO_SERVER_SELECTED
 LANG_ENGLISH        "Aucun serveur séléctionné"
 
-REFERENCE           SERVERBROWSER_CONNECT_TO_SERVER_CAPS
-LANG_ENGLISH        "CONNECTION AU SERVEUR"
-
 REFERENCE           SERVERBROWSER_CONNECT_TO_SERVER_HINT
 LANG_ENGLISH        "Connection au serveur."
 
@@ -193,9 +169,6 @@ REFERENCE           MPTIP_PLUTONIUM
 LANG_ENGLISH        "Sans l'énorme travail venant de tout les développeurs de Plutonium, les jeux que nous aimons auraient fini a l'abandon il y a très longtemps."
 
 // PRIVATEGAMELOBBY
-
-REFERENCE           SERVER_CONNECT
-LANG_ENGLISH        "Connection au serveur."
 
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Autoriser l'option d'aide à la visée pour tout les joueurs manette."

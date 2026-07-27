@@ -148,41 +148,20 @@ LANG_ENGLISH        "Trascina su / giù"
 
 // SERVERBROWSERFILTERSPOPUP
 
-REFERENCE           MENU_SERVER_BROWSER_FILTER
-LANG_ENGLISH        "Inserisci filtro"
-
-REFERENCE           MENU_SERVER_BROWSER_SEARCH_FILTER_CAPS
-LANG_ENGLISH        "FILTRO RICERCA"
-
 REFERENCE           MENU_SERVER_BROWSER_SEARCH_FILTER_HINT
 LANG_ENGLISH        "Inserisci regola di filtro per la lista server."
 // I'm actually proud because this translation is superior to the source English material
 
-REFERENCE           MENU_SERVER_BROWSER_DISPLAY_EMPTY_CAPS
-LANG_ENGLISH        "MOSTRA SERVER VUOTI"
-
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_EMPTY_HINT
 LANG_ENGLISH        "Mostra server vuoti sulla lista server."
 
-REFERENCE           MENU_SERVER_BROWSER_DISPLAY_FULL_CAPS
-LANG_ENGLISH        ""
-
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_FULL_HINT
-LANG_ENGLISH        ""
-
-REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_CAPS
 LANG_ENGLISH        ""
 
 REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
 LANG_ENGLISH        ""
 
-REFERENCE           MENU_SERVER_BROWSER_MAX_PING_CAPS
-LANG_ENGLISH        ""
-
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
-LANG_ENGLISH        ""
-
-REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_CAPS
 LANG_ENGLISH        ""
 
 REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_HINT
@@ -192,9 +171,6 @@ LANG_ENGLISH        ""
 
 REFERENCE           SERVERBROWSER_NO_SERVER_SELECTED
 LANG_ENGLISH        "Nessun server selezionato"
-
-REFERENCE           SERVERBROWSER_CONNECT_TO_SERVER_CAPS
-LANG_ENGLISH        "CONNETTITI AL SERVER"
 
 REFERENCE           SERVERBROWSER_CONNECT_TO_SERVER_HINT
 LANG_ENGLISH        "Connettiti al server."
@@ -206,9 +182,6 @@ LANG_ENGLISH        "Senza il grande impegno di tutti gli sviluppatori di Pluton
 // Traduzione richiede un po' di fantasia
 
 // PRIVATEGAMELOBBY
-
-REFERENCE           SERVER_CONNECT
-LANG_ENGLISH        "Connettiti al server."
 
 REFERENCE           MENU_TARGET_ASSIST_HINT
 LANG_ENGLISH        "Permetti l'utilizzo della aim assist per tutti i giocatori con il gamepad."
