@@ -136,22 +136,22 @@ LANG_ENGLISH        "Przeciągnij w górę / dół"
 // SERVERBROWSERFILTERSPOPUP
 
 REFERENCE           MENU_SERVER_BROWSER_SEARCH_FILTER_HINT
-LANG_ENGLISH        "Tekstowe filtrowanie listy serwerów"
+LANG_ENGLISH        "Tekstowe filtrowanie listy serwerów."
 
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_EMPTY_HINT
-LANG_ENGLISH        "Czy wyświetlać puste serwery na liście."
+LANG_ENGLISH        "Czy wyświetlać puste serwery."
 
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_FULL_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Czy wyświetlać pełne serwery."
 
 REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Czy wyświetlać serwery zabezpieczone hasłem."
 
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Górna granica pingu wyświetlanych serwerów."
 
 REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Czy wyświetlać serwery z asytą celowania."
 
 // SERVERBROWSERSERVERINFO
 
