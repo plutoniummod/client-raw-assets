@@ -144,16 +144,16 @@ REFERENCE           MENU_SERVER_BROWSER_DISPLAY_EMPTY_HINT
 LANG_ENGLISH        "Leere Server in der Serverliste anzeigen."
 
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_FULL_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Volle Server in der Serverliste anzeigen."
 
 REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Passwortgeschützte Server in der Serverliste anzeigen."
 
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Max. Server-Ping in der Serverliste."
 
 REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Server mit Zielhilfe in der Serverliste anzeigen."
 
 // SERVERBROWSERSERVERINFO
 
