@@ -101,8 +101,9 @@
 		FRAME_CHOICE_DVARYESNO_VIS( 22, "@MENU_SUBTITLES_CAPS", cg_subtitles, ;, ( !dvarBool(ui_multiplayer) && SHOW_SUBTITLES ) )
    		FRAME_CHOICE_DVARFLOATLIST_VIS( 23, "@MENU_MATURE_CAPS", ;, { "@MENU_MATURE_UNRESTRICTED_CAPS" 0 "@MENU_MATURE_UNRESTRICTED_CAPS" 1 }, open mature_content_pc_disable_warning, ( dvarString( "cg_mature" ) == "1" && dvarBool(cg_allow_mature) && !IsInGame() && !dvarBool(ui_multiplayer) && SHOW_MATURE ) )
    		FRAME_CHOICE_DVARFLOATLIST_VIS( 23, "@MENU_MATURE_CAPS", cg_mature, { "@MENU_MATURE_REDUCED_CAPS" 1 "@MENU_MATURE_REDUCED_CAPS" 0 }, setdvar "cg_mature" 1; setdvar cg_blood "1", ( dvarString( "cg_mature" ) == "0" && dvarBool(cg_allow_mature) && !IsInGame() && !dvarBool(ui_multiplayer) && SHOW_MATURE ) )
-		FRAME_CHOICE_DVARYESNO_VIS( 24, "@MENU_ALLOW_DOWNLOAD_CAPS", cl_allowdownload, ;,( !dvarBool( ui_multiplayer ) ) )
-		FRAME_CHOICE_DVAREDIT_NUMERIC_VIS( 25, "@PLATFORM_FOV_CAPS", cg_fov, 3, ;, ( !dvarBool(ui_multiplayer) ) )
+   		FRAME_CHOICE_DVARFLOATLIST_VIS( 24, "@MENU_ENABLE_MULE_KICK_CAPS", scr_zm_extra_perk_all, { "@MENU_YES_CAPS" 1 "@MENU_NO_CAPS" 0 }, ;, ( !dvarBool(ui_multiplayer) ) )
+		FRAME_CHOICE_DVARYESNO_VIS( 25, "@MENU_ALLOW_DOWNLOAD_CAPS", cl_allowdownload, ;,( !dvarBool( ui_multiplayer ) ) )
+		FRAME_CHOICE_DVAREDIT_NUMERIC_VIS( 26, "@PLATFORM_FOV_CAPS", cg_fov, 3, ;, ( !dvarBool(ui_multiplayer) ) )
 		//FRAME_CHOICE_DVARFLOATLIST_VIS( 23, "@MENU_ENABLE_CONSOLE_CAPS", monkeytoy, { "@MENU_YES_CAPS" 0 "@MENU_NO_CAPS" 1 }, ;, ( dvar(ui_allowConsole) && ( ( !dvarBool(cg_allow_mature) && !IsInGame() && !dvarBool(ui_multiplayer) ) || ( IsInGame() && !dvarBool(ui_multiplayer) ) ) ) )		
 		//FRAME_CHOICE_DVARFLOATLIST_VIS( 24, "@MENU_ENABLE_CONSOLE_CAPS", monkeytoy, { "@MENU_YES_CAPS" 0 "@MENU_NO_CAPS" 1 }, ;, ( dvar(ui_allowConsole) && dvarBool(cg_allow_mature) && !IsInGame() && !dvarBool(ui_multiplayer) ) )
 		
@@ -134,21 +135,21 @@
 
 #undef CHOICE_SIZE_X
 #define CHOICE_SIZE_X			270
-		MY_CHOICE_DVAREDIT_VIS( 26, cg_fovScale, 31, 18, ;, 1 )
+		MY_CHOICE_DVAREDIT_VIS( 27, cg_fovScale, 31, 18, ;, 1 )
 #undef CHOICE_SIZE_X
 #define CHOICE_SIZE_X			170
 
-		FRAME_DVARSLIDER( 26, "@PLUTONIUM_PLATFORM_FOV_SCALE_CAPS", cg_fovScale, 1, 0.2, 2, ; )
+		FRAME_DVARSLIDER( 27, "@PLUTONIUM_PLATFORM_FOV_SCALE_CAPS", cg_fovScale, 1, 0.2, 2, ; )
 
-		FRAME_CHOICE_DVAREDIT_NUMERIC( 27, "@PLUTONIUM_MENU_MAXFPS_CAPS", com_maxfps, 4, ; )
-		FRAME_CHOICE_DVARYESNO( 28, "@PLUTONIUM_MENU_STREAMER_MODE_CAPS", cl_enableStreamerMode, ; )
-		FRAME_CHOICE_DVARYESNO( 29, "@PLUTONIUM_MENU_ENGINE_SLEEPS_CAPS", com_busyWait, ; )
-		FRAME_CHOICE_DVARYESNO( 30, "@PLUTONIUM_MENU_RECORDCLIENTDEMOS_CAPS", cl_autodemorecord, ; )
-		FRAME_CHOICE_DVARYESNO_VIS( 31, "@PLUTONIUM_MENU_RECORDSERVERDEMOS_CAPS", sv_autodemorecord, ;, (!dvarBool(ui_multiplayer)) )
-		FRAME_CHOICE_DVARYESNO_VIS( 31, "@PLUTONIUM_MENU_RECORDSERVERDEMOS_CAPS", demo_enabled, ;, (dvarBool(ui_multiplayer)) )
-		FRAME_CHOICE_DVARYESNO( 32, "@PLUTONIUM_MENU_IDENTIFIER_CAPS", cg_drawIdentifier, ; )
+		FRAME_CHOICE_DVAREDIT_NUMERIC( 28, "@PLUTONIUM_MENU_MAXFPS_CAPS", com_maxfps, 4, ; )
+		FRAME_CHOICE_DVARYESNO( 29, "@PLUTONIUM_MENU_STREAMER_MODE_CAPS", cl_enableStreamerMode, ; )
+		FRAME_CHOICE_DVARYESNO( 30, "@PLUTONIUM_MENU_ENGINE_SLEEPS_CAPS", com_busyWait, ; )
+		FRAME_CHOICE_DVARYESNO( 31, "@PLUTONIUM_MENU_RECORDCLIENTDEMOS_CAPS", cl_autodemorecord, ; )
+		FRAME_CHOICE_DVARYESNO_VIS( 32, "@PLUTONIUM_MENU_RECORDSERVERDEMOS_CAPS", sv_autodemorecord, ;, (!dvarBool(ui_multiplayer)) )
+		FRAME_CHOICE_DVARYESNO_VIS( 32, "@PLUTONIUM_MENU_RECORDSERVERDEMOS_CAPS", demo_enabled, ;, (dvarBool(ui_multiplayer)) )
+		FRAME_CHOICE_DVARYESNO( 33, "@PLUTONIUM_MENU_IDENTIFIER_CAPS", cg_drawIdentifier, ; )
 
-		FRAME_CHOICE_DVARFLOATLIST_VIS( 33, "@PLUTONIUM_MENU_FLASH_HASHES_CAPS", cg_flashScriptHashes, { "@MENU_OFF_CAPS" 0 "@MENU_ON_CAPS" 1 "@MENU_ALL" 2 }, ;, (!dvarBool(ui_multiplayer)) )
+		FRAME_CHOICE_DVARFLOATLIST_VIS( 34, "@PLUTONIUM_MENU_FLASH_HASHES_CAPS", cg_flashScriptHashes, { "@MENU_OFF_CAPS" 0 "@MENU_ON_CAPS" 1 "@MENU_ALL" 2 }, ;, (!dvarBool(ui_multiplayer)) )
 
 #undef	CHOICE_TEXT_COLOR_NO_HL
 #undef	CHOICE_TEXT_COLOR_HL
@@ -160,7 +161,7 @@
 #define CHOICE_CAPTION_TEXT_COLOR_NO_HL 1 1 1 1
 #define CHOICE_CAPTION_TEXT_COLOR_HL	0 0 0 1
 
-		FRAME_CHOICE_BUTTON_VIS(34, "@PLUTONIUM_MENU_FLASH_HASHES_NOW_CAPS", exec "flashscripthashes";, (!dvarBool(ui_multiplayer)))
+		FRAME_CHOICE_BUTTON_VIS(35, "@PLUTONIUM_MENU_FLASH_HASHES_NOW_CAPS", exec "flashscripthashes";, (!dvarBool(ui_multiplayer)))
 	}
 	
 #undef	CHOICE_TEXT_COLOR_NO_HL

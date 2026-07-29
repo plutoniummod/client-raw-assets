@@ -59,4 +59,7 @@ LANG_ENGLISH        "АВТОМАТИЧЕСКАЯ ВСПЫШКА ХЕШЕЙ СК
 REFERENCE           MENU_FLASH_HASHES_NOW_CAPS
 LANG_ENGLISH        "ОТОБРОЗИТЬ ХЕШИ СКРИПТОВ СЕЙЧАС"
 
+REFERENCE           MENU_ENABLE_MULE_KICK_CAPS
+LANG_ENGLISH        "ВКЛЮЧИТЬ ПИНОК МУЛА"
+
 ENDMARKER
