@@ -144,16 +144,16 @@ REFERENCE           MENU_SERVER_BROWSER_DISPLAY_EMPTY_HINT
 LANG_ENGLISH        "Afficher les serveurs vides sur la liste des serveurs."
 
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_FULL_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Saisissez du texte pour filtrer la liste des serveurs."
 
 REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Montrer les serveurs vides sur la liste des serveurs."
 
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Ping maximum des serveurs sur la liste des serveurs."
 
 REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Afficher les serveurs avec l'aide à la visée sur la liste des serveurs."
 
 // SERVERBROWSERSERVERINFO
 
