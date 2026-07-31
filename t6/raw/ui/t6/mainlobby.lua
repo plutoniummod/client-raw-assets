@@ -828,6 +828,11 @@ CoD.MainLobby.OpenIMGUIServerBrowser = function(MainLobbyWidget, ClientInstance)
 	if CoD.MainMenu.IsGuestRestricted( MainLobbyWidget, ClientInstance ) == true then
 		return 
 	else
+		if UIExpression.DvarBool(ClientInstance.controller, "cg_useOldBrowser") == 1 then
+			Engine.Exec(ClientInstance.controller, "plutoniumServers")
+			return
+		end
+
 		Engine.Exec( ClientInstance.controller, "loadcommonff" )
 		if Engine.CheckNetConnection() == false then
 			local f33_local0 = MainLobbyWidget:openPopup( "popup_net_connection", ClientInstance.controller )

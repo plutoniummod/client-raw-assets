@@ -127,6 +127,12 @@ LANG_ENGLISH        "ОТОБРОЗИТЬ ХЕШИ СКРИПТОВ СЕЙЧАС
 REFERENCE           MENU_FLASH_HASHES_NOW_HINT
 LANG_ENGLISH        "Отобразить хеши скриптов на экран прямо сейчас."
 
+REFERENCE           MENU_OLD_SERVER_BROWSER
+LANG_ENGLISH        "СТАРЫЙ БРАУЗЕР СЕРВЕРОВ"
+
+REFERENCE           MENU_OLD_SERVER_BROWSER_HINT
+LANG_ENGLISH        "Вернуться к браузеру серверов imgui."
+
 // SAFEAREA
 
 REFERENCE           PLATFORM_SAFE_AREA_CONTROLS_LEFT_RIGHT

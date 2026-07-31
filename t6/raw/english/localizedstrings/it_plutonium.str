@@ -138,6 +138,12 @@ REFERENCE           MENU_FLASH_HASHES_NOW_HINT
 LANG_ENGLISH        "Mostra gli hash degli script sullo schermo per un attimo."
 // English source material is perplexing: "Flash" and "now" sound like a repetition in the same phrase. A flash is a flash; you are flashing something <now> [for the duration of a <flash>]. Not repeated in the translation.
 
+REFERENCE           MENU_OLD_SERVER_BROWSER
+LANG_ENGLISH        "VECCHIO BROWSER SERVER"
+
+REFERENCE           MENU_OLD_SERVER_BROWSER_HINT
+LANG_ENGLISH        "Torna al browser server imgui."
+
 // SAFEAREA
 
 REFERENCE           PLATFORM_SAFE_AREA_CONTROLS_LEFT_RIGHT

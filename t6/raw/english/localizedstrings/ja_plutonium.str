@@ -127,6 +127,12 @@ LANG_ENGLISH        "スクリプトハッシュを今すぐフラッシュ"
 REFERENCE           MENU_FLASH_HASHES_NOW_HINT
 LANG_ENGLISH        "スクリプトのハッシュを今すぐ画面上にフラッシュ表示します。"
 
+REFERENCE           MENU_OLD_SERVER_BROWSER
+LANG_ENGLISH        "旧サーバーブラウザ"
+
+REFERENCE           MENU_OLD_SERVER_BROWSER_HINT
+LANG_ENGLISH        "imguiサーバーブラウザに戻す。"
+
 // SAFEAREA
 
 REFERENCE           PLATFORM_SAFE_AREA_CONTROLS_LEFT_RIGHT

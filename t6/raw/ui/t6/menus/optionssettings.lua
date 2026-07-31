@@ -187,6 +187,7 @@ CoD.OptionsSettings.ResetDvars = function (LocalClientIndex)
 	Engine.Exec(LocalClientIndex, "reset cg_drawFPS")
 	Engine.SetDvar("sd_xa2_device_name", 0)
 	Engine.SetDvar("sd_xa2_device_guid", 0)
+	Engine.SetDvar("cg_useOldBrowser", 0)
 end
 
 CoD.OptionsSettings.DefaultPopup_RestoreDefaultSettings = function (f17_arg0, ClientInstance)
@@ -727,6 +728,10 @@ CoD.OptionsSettings.CreateGameTab = function (f44_arg0, f44_arg1)
 			end )
 		end
 	end
+
+	local oldBrowser = f44_local1:addDvarLeftRightSelector(f44_arg1, Engine.Localize("MENU_OLD_SERVER_BROWSER"), "cg_useOldBrowser", Engine.Localize("MENU_OLD_SERVER_BROWSER_HINT"))
+	oldBrowser:addChoice(f44_arg1, Engine.Localize("MENU_DISABLED_CAPS"), 0, nil, CoD.OptionsSettings.Button_ApplyDvarChanged)
+	oldBrowser:addChoice(f44_arg1, Engine.Localize("MENU_ENABLED_CAPS"), 1, nil, CoD.OptionsSettings.Button_ApplyDvarChanged)
 
 	return f44_local0
 end
