@@ -8,30 +8,48 @@ CoD.ServerList.Columns[1].Sortable = 0
 CoD.ServerList.Columns[1].Text = ""
 CoD.ServerList.Columns[1].Icon = "hud_server_locked"
 CoD.ServerList.Columns[2] = {}
-CoD.ServerList.Columns[2].Width = 300
+CoD.ServerList.Columns[2].Width = 250
 CoD.ServerList.Columns[2].Sortable = 1
 CoD.ServerList.Columns[2].Text = UIExpression.ToUpper(nil, Engine.Localize("MENU_SERVERNAME"))
 CoD.ServerList.Columns[2].Icon = ""
 CoD.ServerList.Columns[3] = {}
-CoD.ServerList.Columns[3].Width = 165
+CoD.ServerList.Columns[3].Width = 115
 CoD.ServerList.Columns[3].Sortable = 1
 CoD.ServerList.Columns[3].Text = Engine.Localize("MENU_MAP_NAME_CAPS")
 CoD.ServerList.Columns[3].Icon = ""
 CoD.ServerList.Columns[4] = {}
-CoD.ServerList.Columns[4].Width = 165
-CoD.ServerList.Columns[4].Sortable = 1
-CoD.ServerList.Columns[4].Text = Engine.Localize("MENU_GAME_MODE_CAPS")
-CoD.ServerList.Columns[4].Icon = ""
+if CoD.isZombie then
+	CoD.ServerList.Columns[4].Width = 95
+	CoD.ServerList.Columns[4].Sortable = 1
+	CoD.ServerList.Columns[4].Text = UIExpression.ToUpper(nil, Engine.Localize("ZOMBIE_ROUND"))
+	CoD.ServerList.Columns[4].Icon = ""
+else
+	CoD.ServerList.Columns[3].Width = CoD.ServerList.Columns[3].Width + 65
+	CoD.ServerList.Columns[4].Width = 30
+	CoD.ServerList.Columns[4].Sortable = 0
+	CoD.ServerList.Columns[4].Text = ""
+	CoD.ServerList.Columns[4].Icon = "hud_status_dead"
+end
 CoD.ServerList.Columns[5] = {}
-CoD.ServerList.Columns[5].Width = 105
+CoD.ServerList.Columns[5].Width = 130
 CoD.ServerList.Columns[5].Sortable = 1
-CoD.ServerList.Columns[5].Text = Engine.Localize("MENU_PLAYERS_CAPS")
+CoD.ServerList.Columns[5].Text = Engine.Localize("MENU_GAME_MODE_CAPS")
 CoD.ServerList.Columns[5].Icon = ""
 CoD.ServerList.Columns[6] = {}
-CoD.ServerList.Columns[6].Width = 75
+CoD.ServerList.Columns[6].Width = 105
 CoD.ServerList.Columns[6].Sortable = 1
-CoD.ServerList.Columns[6].Text = Engine.Localize("MENU_PING_CAPS")
+CoD.ServerList.Columns[6].Text = Engine.Localize("MENU_PLAYERS_CAPS")
 CoD.ServerList.Columns[6].Icon = ""
+CoD.ServerList.Columns[7] = {}
+CoD.ServerList.Columns[7].Width = 30
+CoD.ServerList.Columns[7].Sortable = 0
+CoD.ServerList.Columns[7].Text = ""
+CoD.ServerList.Columns[7].Icon = "menu_mp_fileshare_custom"
+CoD.ServerList.Columns[8] = {}
+CoD.ServerList.Columns[8].Width = 75
+CoD.ServerList.Columns[8].Sortable = 1
+CoD.ServerList.Columns[8].Text = Engine.Localize("MENU_PING_CAPS")
+CoD.ServerList.Columns[8].Icon = ""
 CoD.ServerList.RowHeight = CoD.CoD9Button.Height
 CoD.ServerList.ColumnSpacing = 5
 CoD.ServerList.NumElements = 18
@@ -290,8 +308,10 @@ CoD.ServerList.SortFunc = function(server1, server2)
 	elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 3 then
 		val1, val2 = string.lower(server1.displayable_map), string.lower(server2.displayable_map)
 	elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 4 then
-		val1, val2 = string.lower(server1.displayable_gametype), string.lower(server2.displayable_gametype)
+		val1, val2 = tonumber(server1.rounds), tonumber(server2.rounds)
 	elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 5 then
+		val1, val2 = string.lower(server1.displayable_gametype), string.lower(server2.displayable_gametype)
+	elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 6 then
 		val1, val2 = tonumber(#server1.players), tonumber(#server2.players)
 	else
 		val1, val2 = tonumber(server1.ping), tonumber(server2.ping)
@@ -409,23 +429,29 @@ CoD.ServerList.GetButtonData = function (LocalClientIndex, index, element, paren
 	ColumnValues[1] = element.serverListButton.server.has_password
 	ColumnValues[2] = element.serverListButton.server.hostname
 	ColumnValues[3] = element.serverListButton.server.displayable_map
-	ColumnValues[4] = element.serverListButton.server.displayable_gametype
+	if CoD.isZombie then
+		ColumnValues[4] = element.serverListButton.server.rounds
+	else
+		ColumnValues[4] = element.serverListButton.server.is_hardcore
+	end
+	ColumnValues[5] = element.serverListButton.server.displayable_gametype
 
 	if element.serverListButton.server.bots > 0 then
-		ColumnValues[5] = #element.serverListButton.server.players .. "/" .. element.serverListButton.server.maxplayers .. " (" .. element.serverListButton.server.bots .. ")"
+		ColumnValues[6] = #element.serverListButton.server.players .. "/" .. element.serverListButton.server.maxplayers .. " (" .. element.serverListButton.server.bots .. ")"
 	else
-		ColumnValues[5] = #element.serverListButton.server.players .. "/" .. element.serverListButton.server.maxplayers
+		ColumnValues[6] = #element.serverListButton.server.players .. "/" .. element.serverListButton.server.maxplayers
 	end
 
-	ColumnValues[6] = element.serverListButton.server.ping
+	ColumnValues[7] = element.serverListButton.server.mod ~= ""
+	ColumnValues[8] = element.serverListButton.server.ping
 
 	for Column = 1, #CoD.ServerList.Columns, 1 do
 		if element.serverListButton.Columns[Column].Icon ~= nil then
 			if ColumnValues[Column] then
-				element.serverListButton.Columns[1].Icon:setImage(RegisterMaterial(CoD.ServerList.Columns[1].Icon))
-				element.serverListButton.Columns[1].Icon:setAlpha(1)
+				element.serverListButton.Columns[Column].Icon:setImage(RegisterMaterial(CoD.ServerList.Columns[Column].Icon))
+				element.serverListButton.Columns[Column].Icon:setAlpha(1)
 			else
-				element.serverListButton.Columns[1].Icon:setAlpha(0)
+				element.serverListButton.Columns[Column].Icon:setAlpha(0)
 			end
 		elseif element.serverListButton.Columns[Column].Text ~= nil then
 			element.serverListButton.Columns[Column].Text:setText(ColumnValues[Column])
@@ -451,7 +477,7 @@ CoD.ServerList.ResetDvars = function ()
 	Engine.ExecNow(0, "set ui_serverbrowser_searchfilter_passwordprotected 2\n")
 	Engine.ExecNow(0, "set ui_serverbrowser_searchfilter_aimassist 2\n")
 
-	Engine.ExecNow(0, "set ui_serverbrowser_sortheader 6\n")
+	Engine.ExecNow(0, "set ui_serverbrowser_sortheader 8\n")
 	Engine.ExecNow(0, "set ui_serverbrowser_sortheader_reverse 0\n")
 end
 
