@@ -37,15 +37,15 @@ CoD.ServerListButton.new = function (defaultAnimationState, LocalClientIndex, ac
 	ServerListButton.Columns = {}
 	for Column = 1, #CoD.ServerList.Columns, 1 do
 		ServerListButton.Columns[Column] = LUI.UIElement.new({
-            left = 0,
-            top = -CoD.ServerListButton.TextHeight / 2,
-            right = CoD.ServerList.Columns[Column].Width,
-            bottom = CoD.ServerListButton.TextHeight / 2,
-            leftAnchor = true,
-            topAnchor = false,
-            rightAnchor = false,
-            bottomAnchor = false
-        })
+			left = 0,
+			top = -CoD.ServerListButton.TextHeight / 2,
+			right = CoD.ServerList.Columns[Column].Width,
+			bottom = CoD.ServerListButton.TextHeight / 2,
+			leftAnchor = true,
+			topAnchor = false,
+			rightAnchor = false,
+			bottomAnchor = false
+		})
 
 		if CoD.ServerList.Columns[Column].Icon ~= "" then
 			ServerListButton.Columns[Column].Icon = LUI.UIImage.new({

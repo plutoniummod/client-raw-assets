@@ -53,11 +53,11 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 		local modName = CoD.ServerList.SelectedServer.mod
 
 		if modName ~= "" then
-            if CoD.ServerList.SelectedServer.displayable_mod ~= "" then
-                modName = CoD.ServerList.SelectedServer.displayable_mod
-            end
+			if CoD.ServerList.SelectedServer.displayable_mod ~= "" then
+				modName = CoD.ServerList.SelectedServer.displayable_mod
+			end
 
-            self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_MOD")) .. ": " .. modName)
+			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_MOD")) .. ": " .. modName)
 		end
 
 		self.buttonList:addText("")
@@ -68,62 +68,62 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 			self.buttonList:addText(Engine.Localize("MENU_PLAYERS_CAPS") .. ": " .. #CoD.ServerList.SelectedServer.players .. "/" .. CoD.ServerList.SelectedServer.maxplayers)
 		end
 
-        local playersPerRow = 4
-        local totalRows = math.ceil(#CoD.ServerList.SelectedServer.players / playersPerRow)
+		local playersPerRow = 4
+		local totalRows = math.ceil(#CoD.ServerList.SelectedServer.players / playersPerRow)
 
-        for row = 1, totalRows, 1 do
-            local rowContainer = LUI.UIElement.new({
-                leftAnchor = true,
+		for row = 1, totalRows, 1 do
+			local rowContainer = LUI.UIElement.new({
+				leftAnchor = true,
 				rightAnchor = false,
 				topAnchor = true,
 				bottomAnchor = false,
-                left = 0,
-                top = 0,
-                right = 200,
-                bottom = CoD.CoD9Button.Height
-            })
+				left = 0,
+				top = 0,
+				right = 200,
+				bottom = CoD.CoD9Button.Height
+			})
 
-            local horizontalRowList = LUI.UIHorizontalList.new({
-                leftAnchor = true,
+			local horizontalRowList = LUI.UIHorizontalList.new({
+				leftAnchor = true,
 				rightAnchor = true,
 				topAnchor = true,
 				bottomAnchor = true,
-                left = 0,
+				left = 0,
 				top = 0,
 				right = 0,
 				bottom = 0,
-                spacing = 0
-            })
-            rowContainer:addElement(horizontalRowList)
+				spacing = 0
+			})
+			rowContainer:addElement(horizontalRowList)
 
-            for col = 1, playersPerRow, 1 do
-                local text = LUI.UIText.new({
-                    leftAnchor = true,
-                    rightAnchor = true,
-                    topAnchor = true,
-                    bottomAnchor = true,
-                    left = 0,
-                    top = 0,
-                    right = 0,
-                    bottom = 0,
-                    font = CoD.fonts.ExtraSmall,
-                    alignment = LUI.Alignment.Left
-                })
+			for col = 1, playersPerRow, 1 do
+				local text = LUI.UIText.new({
+					leftAnchor = true,
+					rightAnchor = true,
+					topAnchor = true,
+					bottomAnchor = true,
+					left = 0,
+					top = 0,
+					right = 0,
+					bottom = 0,
+					font = CoD.fonts.ExtraSmall,
+					alignment = LUI.Alignment.Left
+				})
 
-                local playerIndex = ((row - 1) * playersPerRow) + col
-                local player = CoD.ServerList.SelectedServer.players[playerIndex]
+				local playerIndex = ((row - 1) * playersPerRow) + col
+				local player = CoD.ServerList.SelectedServer.players[playerIndex]
 
 				if player and player.username then
-                    text:setText(player.username)
-                else
-                    text:setText("")
-                end
+					text:setText(player.username)
+				else
+					text:setText("")
+				end
 
-                horizontalRowList:addElement(text)
-            end
+				horizontalRowList:addElement(text)
+			end
 
-            self.buttonList:addElement(rowContainer)
-        end
+			self.buttonList:addElement(rowContainer)
+		end
 	end
 
 	if not self.buttonList:restoreState() then

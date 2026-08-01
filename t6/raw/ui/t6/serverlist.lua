@@ -285,20 +285,20 @@ end
 CoD.ServerList.SortFunc = function(server1, server2)
 	local val1, val2
 
-    if UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 2 then
-        val1, val2 = string.lower(server1.hostname), string.lower(server2.hostname)
-    elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 3 then
-        val1, val2 = string.lower(server1.displayable_map), string.lower(server2.displayable_map)
-    elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 4 then
-        val1, val2 = string.lower(server1.displayable_gametype), string.lower(server2.displayable_gametype)
-    elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 5 then
-        val1, val2 = tonumber(#server1.players), tonumber(#server2.players)
-    else
-        val1, val2 = tonumber(server1.ping), tonumber(server2.ping)
-    end
+	if UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 2 then
+		val1, val2 = string.lower(server1.hostname), string.lower(server2.hostname)
+	elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 3 then
+		val1, val2 = string.lower(server1.displayable_map), string.lower(server2.displayable_map)
+	elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 4 then
+		val1, val2 = string.lower(server1.displayable_gametype), string.lower(server2.displayable_gametype)
+	elseif UIExpression.DvarInt(0, "ui_serverbrowser_sortheader") == 5 then
+		val1, val2 = tonumber(#server1.players), tonumber(#server2.players)
+	else
+		val1, val2 = tonumber(server1.ping), tonumber(server2.ping)
+	end
 
 	if val1 == val2 then
-        local name1, name2 = string.lower(server1.hostname), string.lower(server2.hostname)
+		local name1, name2 = string.lower(server1.hostname), string.lower(server2.hostname)
 
 		return name1 < name2
 	else
@@ -307,7 +307,7 @@ CoD.ServerList.SortFunc = function(server1, server2)
 		else
 			return val1 < val2
 		end
-    end
+	end
 end
 
 CoD.ServerList.FindHoveredIndex = function()
