@@ -18,6 +18,10 @@ CoD.ServerList.Columns[CoD.ServerList.COLUMN_PASSWORD] = {}
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_PASSWORD].Width = 30
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_PASSWORD].Icon = "menu_mp_lobby_locked"
 
+CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD] = {}
+CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD].Width = 30
+CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD].Icon = "menu_mp_fileshare_custom"
+
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_SERVER_NAME] = {}
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_SERVER_NAME].Width = 300
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_SERVER_NAME].Text = UIExpression.ToUpper(nil, Engine.Localize("MENU_SERVERNAME"))
@@ -49,10 +53,6 @@ CoD.ServerList.Columns[CoD.ServerList.COLUMN_GAME_MODE].Text = Engine.Localize("
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_PLAYERS] = {}
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_PLAYERS].Width = 105
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_PLAYERS].Text = Engine.Localize("MENU_PLAYERS_CAPS")
-
-CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD] = {}
-CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD].Width = 30
-CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD].Icon = "menu_mp_fileshare_custom"
 
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_PING] = {}
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_PING].Width = 75
@@ -371,6 +371,8 @@ CoD.ServerList.SortFunc = function(server1, server2)
 
 	if sortHeader == CoD.ServerList.COLUMN_PASSWORD then
 		val1, val2 = tostring(server1.has_password), tostring(server2.has_password)
+	elseif sortHeader == CoD.ServerList.COLUMN_MOD then
+		val1, val2 = string.lower(server1.mod), string.lower(server2.mod)
 	elseif sortHeader == CoD.ServerList.COLUMN_SERVER_NAME then
 		val1, val2 = string.lower(server1.hostname), string.lower(server2.hostname)
 	elseif sortHeader == CoD.ServerList.COLUMN_MAP then
@@ -383,8 +385,6 @@ CoD.ServerList.SortFunc = function(server1, server2)
 		val1, val2 = string.lower(server1.displayable_gametype), string.lower(server2.displayable_gametype)
 	elseif sortHeader == CoD.ServerList.COLUMN_PLAYERS then
 		val1, val2 = tonumber(#server1.players), tonumber(#server2.players)
-	elseif sortHeader == CoD.ServerList.COLUMN_MOD then
-		val1, val2 = string.lower(server1.mod), string.lower(server2.mod)
 	elseif sortHeader == CoD.ServerList.COLUMN_PING then
 		val1, val2 = tonumber(server1.ping), tonumber(server2.ping)
 	end
@@ -523,6 +523,7 @@ CoD.ServerList.GetButtonData = function (LocalClientIndex, index, element, paren
 
 	local ColumnValues = {}
 	ColumnValues[CoD.ServerList.COLUMN_PASSWORD] = element.serverListButton.server.has_password
+	ColumnValues[CoD.ServerList.COLUMN_MOD] = element.serverListButton.server.mod ~= ""
 	ColumnValues[CoD.ServerList.COLUMN_SERVER_NAME] = element.serverListButton.server.hostname
 	ColumnValues[CoD.ServerList.COLUMN_MAP] = element.serverListButton.server.displayable_map
 
@@ -540,7 +541,6 @@ CoD.ServerList.GetButtonData = function (LocalClientIndex, index, element, paren
 		ColumnValues[CoD.ServerList.COLUMN_PLAYERS] = #element.serverListButton.server.players .. "/" .. element.serverListButton.server.maxplayers
 	end
 
-	ColumnValues[CoD.ServerList.COLUMN_MOD] = element.serverListButton.server.mod ~= ""
 	ColumnValues[CoD.ServerList.COLUMN_PING] = element.serverListButton.server.ping
 
 	for Column = 1, #CoD.ServerList.Columns, 1 do
