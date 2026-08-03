@@ -86,23 +86,23 @@ LUI.createMenu.ServerBrowserFilters = function ( owner )
 	local gametypesDisplays = {"CUSTOM_ALL"}
 	local gametypesValues = {""}
 
-	local row = 0
+	local gametypesRow = 0
 	while true do
-		local val = UIExpression.TableLookupGetColumnValueForRow(0, CoD.gametypesTable, row, 0)
+		local gametypesColVal = UIExpression.TableLookupGetColumnValueForRow(0, CoD.gametypesTable, gametypesRow, 0)
 
-		if val == "" then
+		if gametypesColVal == "" then
 			break
 		end
 
-		if val == "0" then
-			local gametype = UIExpression.TableLookupGetColumnValueForRow(0, CoD.gametypesTable, row, 1)
-			local gametype_ref = UIExpression.TableLookupGetColumnValueForRow(0, CoD.gametypesTable, row, 2)
+		if gametypesColVal == "0" then
+			local gametype = UIExpression.TableLookupGetColumnValueForRow(0, CoD.gametypesTable, gametypesRow, 1)
+			local gametypeRef = UIExpression.TableLookupGetColumnValueForRow(0, CoD.gametypesTable, gametypesRow, 2)
 
-			gametypesDisplays[#gametypesDisplays + 1] = gametype_ref
 			gametypesValues[#gametypesValues + 1] = gametype
+			gametypesDisplays[#gametypesDisplays + 1] = gametypeRef
 		end
 
-		row = row + 1
+		gametypesRow = gametypesRow + 1
 	end
 
 	self.gametypeButton = self.buttonList:addDvarLeftRightSelector( owner, Engine.Localize("MENU_GAME_MODE_CAPS"), "ui_serverbrowser_searchfilter_gamemode", Engine.Localize("SERVERBROWSER_GAMETYPE_HINT") )
@@ -111,25 +111,31 @@ LUI.createMenu.ServerBrowserFilters = function ( owner )
 	local mapsDisplays = {"CUSTOM_ALL"}
 	local mapsValues = {""}
 
-	local rowForNum = 0
+	local mapsRow = 0
 	while true do
-		local valForNum = UIExpression.TableLookupGetColumnValueForRow(0, CoD.mapsTable, rowForNum, 0)
+		local mapsColVal = UIExpression.TableLookupGetColumnValueForRow(0, CoD.mapsTable, mapsRow, 0)
 
-		if valForNum == "" then
+		if mapsColVal == "" then
 			break
 		end
 
-		if valForNum == "maxnum_map" then
-			local numMaps = tonumber(UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, rowForNum, 1))
+		if mapsColVal == "maxnum_map" then
+			local numMaps = tonumber(UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, mapsRow, 1))
 
 			for i = 1, numMaps, 1 do
-				mapsDisplays[#mapsDisplays + 1] = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, rowForNum + i, 3) .. "_CAPS"
-				mapsValues[#mapsValues + 1] = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, rowForNum + i, 0)
+				local map = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, mapsRow + i, 0)
+				local mapRef = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, mapsRow + i, 3) .. "_CAPS"
+
+				if map ~= "zm_transit_dr" then
+					mapsValues[#mapsValues + 1] = map
+					mapsDisplays[#mapsDisplays + 1] = mapRef
+				end
 			end
+
 			break
 		end
 
-		rowForNum = rowForNum + 1
+		mapsRow = mapsRow + 1
 	end
 
 	self.mapButton = self.buttonList:addDvarLeftRightSelector( owner, Engine.Localize("MENU_MAP_NAME_CAPS"), "ui_serverbrowser_searchfilter_map", Engine.Localize("SERVERBROWSER_MAP_HINT") )

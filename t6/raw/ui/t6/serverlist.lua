@@ -338,8 +338,14 @@ CoD.ServerList.FilterFunc = function(server)
 
 	local map = UIExpression.DvarString(0, "ui_serverbrowser_searchfilter_map")
 	if map ~= "" then
-		if server.map ~= map then
-			return false
+		if map == "zm_transit" then
+			if server.map ~= map and server.map ~= "zm_transit_dr" then
+				return false
+			end
+		else
+			if server.map ~= map then
+				return false
+			end
 		end
 	end
 
