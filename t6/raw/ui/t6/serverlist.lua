@@ -34,7 +34,7 @@ if CoD.isZombie then
 	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND] = {}
 	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND].Width = 30
 	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND].Icon = "hud_chalk_5"
-	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND].IconButText = true
+	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND].IconTextRows = true
 	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND].IconColor = {
 		r = 0.666,
 		g = 0,

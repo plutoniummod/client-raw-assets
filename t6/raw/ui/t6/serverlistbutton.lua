@@ -47,7 +47,7 @@ CoD.ServerListButton.new = function (defaultAnimationState, LocalClientIndex, ac
 			bottomAnchor = false
 		})
 
-		if CoD.ServerList.Columns[Column].Icon ~= nil and CoD.ServerList.Columns[Column].IconButText == nil then
+		if CoD.ServerList.Columns[Column].Icon ~= nil and CoD.ServerList.Columns[Column].IconTextRows == nil then
 			ServerListButton.Columns[Column].Icon = LUI.UIImage.new({
 				left = -CoD.ServerListButton.TextHeight / 2,
 				top = -CoD.ServerListButton.TextHeight / 2,
@@ -62,7 +62,7 @@ CoD.ServerListButton.new = function (defaultAnimationState, LocalClientIndex, ac
 			if CoD.ServerList.Columns[Column].IconColor ~= nil then
 				ServerListButton.Columns[Column].Icon:setRGB(CoD.ServerList.Columns[Column].IconColor.r, CoD.ServerList.Columns[Column].IconColor.g, CoD.ServerList.Columns[Column].IconColor.b)
 			end
-			
+
 			ServerListButton.Columns[Column]:addElement(ServerListButton.Columns[Column].Icon)
 		else
 			ServerListButton.Columns[Column].Text = LUI.UIText.new({
@@ -76,6 +76,10 @@ CoD.ServerListButton.new = function (defaultAnimationState, LocalClientIndex, ac
 				bottomAnchor = false,
 				font = CoD.ServerListButton.Font
 			})
+
+			if CoD.ServerList.Columns[Column].IconTextRows ~= nil then
+				ServerListButton.Columns[Column].Text:setAlignment(LUI.Alignment.Center)
+			end
 
 			ServerListButton.Columns[Column]:addElement(ServerListButton.Columns[Column].Text)
 		end
