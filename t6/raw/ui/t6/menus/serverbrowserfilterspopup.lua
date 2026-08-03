@@ -76,11 +76,9 @@ LUI.createMenu.ServerBrowserFilters = function ( owner )
 	self.aimAssistButton = self.buttonList:addDvarLeftRightSelector( owner, Engine.Localize("MENU_AIM_ASSIST_CAPS"), "ui_serverbrowser_searchfilter_aimassist", Engine.Localize("MENU_SERVER_BROWSER_AIM_ASSIST_HINT") )
 	CoD.GameOptions.Button_AddChoices( owner, self.aimAssistButton, { "MENU_NO_CAPS", "MENU_YES_CAPS", "CUSTOM_ALL" }, { 0, 1, 2 } )
 
-	if CoD.isZombie then
-		self.brainRotButton = self.buttonList:addDvarLeftRightSelector( owner, Engine.Localize("SERVERBROWSER_HIDEBRAINROT_ZM"), "ui_serverbrowser_searchfilter_hidebrainrot", Engine.Localize("SERVERBROWSER_HIDEBRAINROT_HINT_ZM") )
-	else
-		self.brainRotButton = self.buttonList:addDvarLeftRightSelector( owner, Engine.Localize("SERVERBROWSER_HIDEBRAINROT_MP"), "ui_serverbrowser_searchfilter_hidebrainrot", Engine.Localize("SERVERBROWSER_HIDEBRAINROT_HINT_MP") )
-	end
+	local hideBrainrotStr = CoD.MPZM(Engine.Localize("SERVERBROWSER_HIDEBRAINROT_MP"), Engine.Localize("SERVERBROWSER_HIDEBRAINROT_ZM"))
+	local hideBrainrotHintStr = CoD.MPZM(Engine.Localize("SERVERBROWSER_HIDEBRAINROT_HINT_MP"), Engine.Localize("SERVERBROWSER_HIDEBRAINROT_HINT_ZM"))
+	self.brainRotButton = self.buttonList:addDvarLeftRightSelector( owner, hideBrainrotStr, "ui_serverbrowser_searchfilter_hidebrainrot", hideBrainrotHintStr )
 	CoD.GameOptions.Button_AddChoices( owner, self.brainRotButton, { "MENU_NO_CAPS", "MENU_YES_CAPS" }, { 0, 1 } )
 
 	local mapsDisplays = {"CUSTOM_ALL"}
