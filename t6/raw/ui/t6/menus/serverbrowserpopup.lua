@@ -165,10 +165,6 @@ LUI.createMenu.ServerBrowser = function (LocalClientIndex)
 
 			HeaderIcon:setImage(RegisterMaterial(CoD.ServerList.Columns[Column].Icon))
 
-			if CoD.ServerList.Columns[Column].IconColor ~= nil then
-				HeaderIcon:setRGB(CoD.ServerList.Columns[Column].IconColor.r, CoD.ServerList.Columns[Column].IconColor.g, CoD.ServerList.Columns[Column].IconColor.b)
-			end
-
 			HeaderButton.headerIcon = HeaderIcon
 			HeaderButton:addElement(HeaderIcon)
 		elseif CoD.ServerList.Columns[Column].Text ~= nil then
