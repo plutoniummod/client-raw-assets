@@ -9,15 +9,13 @@ CoD.ServerBrowser.UpdateHeader = function(headerButton)
 
 	if headerButton.headerIcon ~= nil then
 		if sortHeader == headerButton.column then
-			if UIExpression.DvarBool(0, "ui_serverbrowser_sortheader_reverse") == 1 then
-				headerButton.headerIcon:setAlpha(0.9)
-			else
-				headerButton.headerIcon:setAlpha(1)
-			end
+			headerButton.headerIcon:setAlpha(0)
 		else
-			headerButton.headerIcon:setAlpha(0.5)
+			headerButton.headerIcon:setAlpha(1)
 		end
-	elseif headerButton.headerArrow ~= nil then
+	end
+
+	if headerButton.headerArrow ~= nil then
 		if sortHeader == headerButton.column then
 			headerButton.headerArrow:setAlpha(1)
 
@@ -189,26 +187,25 @@ LUI.createMenu.ServerBrowser = function (LocalClientIndex)
 			HeaderText:setText(CoD.ServerList.Columns[Column].Text)
 			HeaderButton.headerText = HeaderText
 			HeaderButton:addElement(HeaderText)
-
-			local _, _, textWidth, ___ = GetTextDimensions(CoD.ServerList.Columns[Column].Text, CoD.fonts.Condensed, CoD.textSize.Condensed)
-
-			local HeaderArrow = LUI.UIImage.new({
-				left = CoD.ServerListButton.TextOffset + textWidth,
-				top = -CoD.textSize.Condensed / 2,
-				right = CoD.ServerListButton.TextOffset + textWidth + CoD.textSize.Condensed,
-				bottom = CoD.textSize.Condensed / 2,
-				leftAnchor = true,
-				topAnchor = false,
-				rightAnchor = false,
-				bottomAnchor = false
-			})
-
-			HeaderArrow:setImage(RegisterMaterial("ui_arrow_right"))
-			HeaderArrow:setZRot(90)
-			HeaderArrow:setAlpha(0)
-			HeaderButton.headerArrow = HeaderArrow
-			HeaderButton:addElement(HeaderArrow)
 		end
+
+		local HeaderArrow = LUI.UIImage.new()
+
+		if CoD.ServerList.Columns[Column].Icon ~= nil then
+			HeaderArrow:setLeftRight(false, false, -CoD.textSize.Condensed / 2, CoD.textSize.Condensed / 2)
+			HeaderArrow:setTopBottom(false, false, -CoD.textSize.Condensed / 2, CoD.textSize.Condensed / 2)
+		elseif CoD.ServerList.Columns[Column].Text ~= nil then
+			local _, __, textWidth, ___ = GetTextDimensions(CoD.ServerList.Columns[Column].Text, CoD.fonts.Condensed, CoD.textSize.Condensed)
+
+			HeaderArrow:setLeftRight(true, false, CoD.ServerListButton.TextOffset + textWidth, CoD.ServerListButton.TextOffset + textWidth + CoD.textSize.Condensed)
+			HeaderArrow:setTopBottom(false, false, -CoD.textSize.Condensed / 2, CoD.textSize.Condensed / 2)
+		end
+
+		HeaderArrow:setImage(RegisterMaterial("ui_arrow_right"))
+		HeaderArrow:setZRot(90)
+		HeaderArrow:setAlpha(0)
+		HeaderButton.headerArrow = HeaderArrow
+		HeaderButton:addElement(HeaderArrow)
 
 		self.header:addElement(HeaderButton)
 		self.headers[Column] = HeaderButton
