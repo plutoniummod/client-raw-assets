@@ -128,7 +128,21 @@ LUI.createMenu.ServerBrowserFilters = function ( owner )
 
 			for i = 1, numMaps, 1 do
 				local map = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, mapsRow + i, 0)
-				local mapRef = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, mapsRow + i, 3) .. "_CAPS"
+				local mapRef = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, mapsRow + i, 3)
+
+				if CoD.isZombie then
+					mapRef = UIExpression.TableLookup(nil, CoD.gametypesTable, 0, 0, 1, "zclassic", 7)
+
+					if map ~= "zm_transit" then
+						mapRef = UIExpression.ToUpper(nil, mapRef .. "_" .. map)
+					end
+
+					if string.find(Engine.Localize(mapRef), mapRef) then
+						mapRef = UIExpression.TableLookup(nil, CoD.gametypesTable, 0, 5, 2, map, 16)
+					end
+				end
+
+				mapRef = mapRef .. "_CAPS"
 
 				if map ~= "zm_transit_dr" then
 					mapsValues[#mapsValues + 1] = map
