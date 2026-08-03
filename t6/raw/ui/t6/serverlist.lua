@@ -6,7 +6,8 @@ CoD.ServerList.COLUMN_PASSWORD     = 1
 CoD.ServerList.COLUMN_MOD          = 2
 CoD.ServerList.COLUMN_SERVER_NAME  = 3
 CoD.ServerList.COLUMN_MAP          = 4
-CoD.ServerList.COLUMN_MPHC_ZMROUND = 5
+CoD.ServerList.COLUMN_ROUND        = CoD.MPZM(nil, 5)
+CoD.ServerList.COLUMN_HARDCORE     = CoD.MPZM(5, nil)
 CoD.ServerList.COLUMN_GAME_MODE    = 6
 CoD.ServerList.COLUMN_PLAYERS      = 7
 CoD.ServerList.COLUMN_PING         = 8
@@ -25,18 +26,20 @@ CoD.ServerList.Columns[CoD.ServerList.COLUMN_MAP] = {}
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_MAP].Width = 130
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_MAP].Text = Engine.Localize("MENU_MAP_NAME_CAPS")
 
-CoD.ServerList.Columns[CoD.ServerList.COLUMN_MPHC_ZMROUND] = {}
-CoD.ServerList.Columns[CoD.ServerList.COLUMN_MPHC_ZMROUND].Width = 30
 if CoD.isZombie then
-	CoD.ServerList.Columns[CoD.ServerList.COLUMN_MPHC_ZMROUND].Icon = "hud_chalk_5"
-	CoD.ServerList.Columns[CoD.ServerList.COLUMN_MPHC_ZMROUND].IconButText = true
-	CoD.ServerList.Columns[CoD.ServerList.COLUMN_MPHC_ZMROUND].IconColor = {
+	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND] = {}
+	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND].Width = 30
+	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND].Icon = "hud_chalk_5"
+	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND].IconButText = true
+	CoD.ServerList.Columns[CoD.ServerList.COLUMN_ROUND].IconColor = {
 		r = 0.666,
 		g = 0,
 		b = 0
 	}
 else
-	CoD.ServerList.Columns[CoD.ServerList.COLUMN_MPHC_ZMROUND].Icon = "hud_status_dead"
+	CoD.ServerList.Columns[CoD.ServerList.COLUMN_HARDCORE] = {}
+	CoD.ServerList.Columns[CoD.ServerList.COLUMN_HARDCORE].Width = 30
+	CoD.ServerList.Columns[CoD.ServerList.COLUMN_HARDCORE].Icon = "hud_status_dead"
 end
 
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_GAME_MODE] = {}
@@ -366,12 +369,10 @@ CoD.ServerList.SortFunc = function(server1, server2)
 		val1, val2 = string.lower(server1.hostname), string.lower(server2.hostname)
 	elseif sortHeader == CoD.ServerList.COLUMN_MAP then
 		val1, val2 = string.lower(server1.displayable_map), string.lower(server2.displayable_map)
-	elseif sortHeader == CoD.ServerList.COLUMN_MPHC_ZMROUND then
-		if CoD.isZombie then
-			val1, val2 = tonumber(server1.rounds), tonumber(server2.rounds)
-		else
-			val1, val2 = tostring(server1.is_hardcore), tostring(server2.is_hardcore)
-		end
+	elseif sortHeader == CoD.ServerList.COLUMN_ROUND then
+		val1, val2 = tonumber(server1.rounds), tonumber(server2.rounds)
+	elseif sortHeader == CoD.ServerList.COLUMN_HARDCORE then
+		val1, val2 = tostring(server1.is_hardcore), tostring(server2.is_hardcore)
 	elseif sortHeader == CoD.ServerList.COLUMN_GAME_MODE then
 		val1, val2 = string.lower(server1.displayable_gametype), string.lower(server2.displayable_gametype)
 	elseif sortHeader == CoD.ServerList.COLUMN_PLAYERS then
@@ -518,11 +519,13 @@ CoD.ServerList.GetButtonData = function (LocalClientIndex, index, element, paren
 	ColumnValues[CoD.ServerList.COLUMN_PASSWORD] = element.serverListButton.server.has_password
 	ColumnValues[CoD.ServerList.COLUMN_SERVER_NAME] = element.serverListButton.server.hostname
 	ColumnValues[CoD.ServerList.COLUMN_MAP] = element.serverListButton.server.displayable_map
+
 	if CoD.isZombie then
-		ColumnValues[CoD.ServerList.COLUMN_MPHC_ZMROUND] = element.serverListButton.server.rounds
+		ColumnValues[CoD.ServerList.COLUMN_ROUND] = element.serverListButton.server.rounds
 	else
-		ColumnValues[CoD.ServerList.COLUMN_MPHC_ZMROUND] = element.serverListButton.server.is_hardcore
+		ColumnValues[CoD.ServerList.COLUMN_HARDCORE] = element.serverListButton.server.is_hardcore
 	end
+
 	ColumnValues[CoD.ServerList.COLUMN_GAME_MODE] = element.serverListButton.server.displayable_gametype
 
 	if element.serverListButton.server.bots > 0 then
