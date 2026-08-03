@@ -260,20 +260,11 @@ CoD.ServerList.FilterFunc = function(server)
 	local searchFilter = string.lower(UIExpression.DvarString(0, "ui_serverbrowser_searchfilter"))
 
 	if searchFilter ~= "" then
-		local foundSearchFilter = false
 		local hostname = string.lower(server.hostname)
 		local displayable_map = string.lower(server.displayable_map)
 		local displayable_gametype = string.lower(server.displayable_gametype)
 
-		if string.find(hostname, searchFilter) then
-			foundSearchFilter = true
-		elseif string.find(displayable_map, searchFilter) then
-			foundSearchFilter = true
-		elseif string.find(displayable_gametype, searchFilter) then
-			foundSearchFilter = true
-		end
-
-		if not foundSearchFilter then
+		if not string.find(hostname, searchFilter) and not string.find(displayable_map, searchFilter) and not string.find(displayable_gametype, searchFilter) then
 			return false
 		end
 	end
