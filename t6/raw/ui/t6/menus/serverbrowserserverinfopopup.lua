@@ -54,7 +54,7 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 		local modName = CoD.ServerList.SelectedServer.mod
 
 		if modName ~= "" then
-			if CoD.ServerList.SelectedServer.displayable_mod ~= nil then
+			if CoD.ServerList.SelectedServer.displayable_mod ~= "" then
 				modName = CoD.ServerList.SelectedServer.displayable_mod
 			end
 
