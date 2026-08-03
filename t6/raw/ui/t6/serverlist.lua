@@ -20,7 +20,7 @@ CoD.ServerList.Columns[CoD.ServerList.COLUMN_PASSWORD].Icon = "menu_mp_lobby_loc
 
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD] = {}
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD].Width = 30
-CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD].Icon = "menu_mp_fileshare_custom"
+CoD.ServerList.Columns[CoD.ServerList.COLUMN_MOD].Icon = "menu_mp_lobby_customgame"
 
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_SERVER_NAME] = {}
 CoD.ServerList.Columns[CoD.ServerList.COLUMN_SERVER_NAME].Width = 300
