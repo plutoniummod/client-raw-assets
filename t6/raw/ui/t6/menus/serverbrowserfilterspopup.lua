@@ -3,7 +3,7 @@ CoD.ServerBrowserFilters = {}
 CoD.ServerBrowserFilters.Back = function (self, event)
 	event.servers = {}
 	CoD.ServerList.ServerListRefresh(CoD.ServerList.ServerList, event)
-	
+
 	self:saveState()
 	self:goBack(event.controller)
 end
@@ -123,7 +123,7 @@ LUI.createMenu.ServerBrowserFilters = function ( owner )
 			local numMaps = tonumber(UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, rowForNum, 1))
 
 			for i = 1, numMaps, 1 do
-				mapsDisplays[#mapsDisplays + 1] = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, rowForNum + i, 3)
+				mapsDisplays[#mapsDisplays + 1] = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, rowForNum + i, 3) .. "_CAPS"
 				mapsValues[#mapsValues + 1] = UIExpression.TableLookupGetColumnValueForRow(nil, CoD.mapsTable, rowForNum + i, 0)
 			end
 			break
