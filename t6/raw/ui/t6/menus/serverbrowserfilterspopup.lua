@@ -98,6 +98,10 @@ LUI.createMenu.ServerBrowserFilters = function ( owner )
 			local gametype = UIExpression.TableLookupGetColumnValueForRow(0, CoD.gametypesTable, gametypesRow, 1)
 			local gametypeRef = UIExpression.TableLookupGetColumnValueForRow(0, CoD.gametypesTable, gametypesRow, 2)
 
+			if gametype == "zclassic" then
+				gametypeRef = "MENU_DEFAULT_XENON_CAPS"
+			end
+
 			gametypesValues[#gametypesValues + 1] = gametype
 			gametypesDisplays[#gametypesDisplays + 1] = gametypeRef
 		end
