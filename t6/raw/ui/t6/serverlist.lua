@@ -370,9 +370,9 @@ CoD.ServerList.SortFunc = function(server1, server2)
 	local sortHeader = UIExpression.DvarInt(0, "ui_serverbrowser_sortheader")
 
 	if sortHeader == CoD.ServerList.COLUMN_PASSWORD then
-		val1, val2 = tostring(server1.has_password), tostring(server2.has_password)
+		val1, val2 = server1.has_password and 0 or 1, server2.has_password and 0 or 1
 	elseif sortHeader == CoD.ServerList.COLUMN_MOD then
-		val1, val2 = string.lower(server1.mod), string.lower(server2.mod)
+		val1, val2 = server1.mod ~= "" and 0 or 1, server2.mod ~= "" and 0 or 1
 	elseif sortHeader == CoD.ServerList.COLUMN_SERVER_NAME then
 		val1, val2 = string.lower(server1.hostname), string.lower(server2.hostname)
 	elseif sortHeader == CoD.ServerList.COLUMN_MAP then
@@ -380,7 +380,7 @@ CoD.ServerList.SortFunc = function(server1, server2)
 	elseif sortHeader == CoD.ServerList.COLUMN_ROUND then
 		val1, val2 = tonumber(server1.rounds), tonumber(server2.rounds)
 	elseif sortHeader == CoD.ServerList.COLUMN_HARDCORE then
-		val1, val2 = tostring(server1.is_hardcore), tostring(server2.is_hardcore)
+		val1, val2 = server1.is_hardcore and 0 or 1, server2.is_hardcore and 0 or 1
 	elseif sortHeader == CoD.ServerList.COLUMN_GAME_MODE then
 		val1, val2 = string.lower(server1.displayable_gametype), string.lower(server2.displayable_gametype)
 	elseif sortHeader == CoD.ServerList.COLUMN_PLAYERS then
