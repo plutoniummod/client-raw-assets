@@ -103,7 +103,7 @@ LUI.createMenu.ServerBrowserFilters = function ( owner )
 						mapRef = UIExpression.ToUpper(nil, mapRef .. "_" .. map)
 					end
 
-					if string.find(Engine.Localize(mapRef), mapRef) then
+					if string.find(Engine.Localize(mapRef), mapRef, 1, true) then
 						mapRef = UIExpression.TableLookup(nil, CoD.gametypesTable, 0, 5, 2, map, 16)
 					end
 				end

@@ -176,7 +176,7 @@ CoD.ServerList.SetDisplayables = function(server)
 
 			server.displayable_map = Engine.Localize(reference_map)
 
-			if string.find(server.displayable_map, reference_map) then
+			if string.find(server.displayable_map, reference_map, 1, true) then
 				server.displayable_map = server.map
 			end
 		else
@@ -187,7 +187,7 @@ CoD.ServerList.SetDisplayables = function(server)
 			else
 				server.displayable_gametype = Engine.Localize(reference_gametype)
 
-				if string.find(server.displayable_gametype, reference_gametype) then
+				if string.find(server.displayable_gametype, reference_gametype, 1, true) then
 					server.displayable_gametype = server.gametype
 				end
 			end
@@ -199,7 +199,7 @@ CoD.ServerList.SetDisplayables = function(server)
 			else
 				server.displayable_map = Engine.Localize(reference_map)
 
-				if string.find(server.displayable_map, reference_map) then
+				if string.find(server.displayable_map, reference_map, 1, true) then
 					server.displayable_map = server.location
 				end
 			end
@@ -213,7 +213,7 @@ CoD.ServerList.SetDisplayables = function(server)
 				else
 					server.displayable_map = Engine.Localize(reference_map)
 
-					if string.find(server.displayable_map, reference_map) then
+					if string.find(server.displayable_map, reference_map, 1, true) then
 						server.displayable_map = server.map
 					end
 				end
@@ -227,7 +227,7 @@ CoD.ServerList.SetDisplayables = function(server)
 		else
 			server.displayable_gametype = Engine.Localize(reference_gametype)
 
-			if string.find(server.displayable_gametype, reference_gametype) then
+			if string.find(server.displayable_gametype, reference_gametype, 1, true) then
 				server.displayable_gametype = server.gametype
 			end
 		end
@@ -239,7 +239,7 @@ CoD.ServerList.SetDisplayables = function(server)
 		else
 			server.displayable_map = Engine.Localize(reference_map)
 
-			if string.find(server.displayable_map, reference_map) then
+			if string.find(server.displayable_map, reference_map, 1, true) then
 				server.displayable_map = server.map
 			end
 		end
@@ -262,7 +262,7 @@ CoD.ServerList.FilterFunc = function(server)
 		local displayable_map = string.lower(server.displayable_map)
 		local displayable_gametype = string.lower(server.displayable_gametype)
 
-		if not string.find(hostname, searchFilter) and not string.find(displayable_map, searchFilter) and not string.find(displayable_gametype, searchFilter) then
+		if not string.find(hostname, searchFilter, 1, true) and not string.find(displayable_map, searchFilter, 1, true) and not string.find(displayable_gametype, searchFilter, 1, true) then
 			return false
 		end
 	end
