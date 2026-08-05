@@ -107,7 +107,7 @@ CoD.ServerList.SelectServer = function (self, event)
 
 	if CoD.ServerList.SelectedServer ~= nil and CoD.ServerList.SelectedServer.has_password then
 		CoD.ServerList.EnteringPassword = true
-		Engine.Exec(0, "ui_keyboard_new " .. CoD.KEYBOARD_TYPE_TEXT_MESSAGE .. " \"" .. Engine.Localize("MPUI_ENTER_PASSWORD") .. "\" \"\" " .. 256)
+		Engine.Exec(0, "ui_keyboard_new " .. CoD.KEYBOARD_TYPE_REGISTRATION_INPUT_PASSWORD .. " \"" .. Engine.Localize("MPUI_ENTER_PASSWORD") .. "\" " .. "n/a" .. " " .. 256 .. " " .. 1)
 	else
 		CoD.ServerList.JoinServer(self, event)
 	end
@@ -120,7 +120,7 @@ CoD.ServerList.JoinServer = function (self, event)
 		end
 	end
 
-	if event.type == CoD.KEYBOARD_TYPE_TEXT_MESSAGE and not CoD.ServerList.EnteringPassword then
+	if event.type == CoD.KEYBOARD_TYPE_REGISTRATION_INPUT_PASSWORD and not CoD.ServerList.EnteringPassword then
 		return
 	end
 
@@ -129,7 +129,7 @@ CoD.ServerList.JoinServer = function (self, event)
 	end
 
 	if CoD.ServerList.SelectedServer.has_password then
-		if event.type ~= CoD.KEYBOARD_TYPE_TEXT_MESSAGE then
+		if event.type ~= CoD.KEYBOARD_TYPE_REGISTRATION_INPUT_PASSWORD then
 			return
 		end
 
