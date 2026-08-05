@@ -392,41 +392,31 @@ CoD.ServerList.SortFunc = function(server1, server2)
 end
 
 CoD.ServerList.FindHoveredIndex = function()
-	local foundServer = false
-
-	for index = 1, #CoD.ServerList.Servers, 1 do
-		if CoD.ServerList.HoveredServer ~= nil and CoD.ServerList.HoveredIndex ~= nil and CoD.ServerList.HoveredIndex > 1 then
+	if CoD.ServerList.HoveredServer ~= nil and CoD.ServerList.HoveredIndex ~= nil and CoD.ServerList.HoveredIndex > 1 then
+		for index = 1, #CoD.ServerList.Servers, 1 do
 			if CoD.ServerList.HoveredServer.ip == CoD.ServerList.Servers[index].ip and CoD.ServerList.HoveredServer.port == CoD.ServerList.Servers[index].port then
-				foundServer = true
 				CoD.ServerList.HoveredIndex = index
-				break
+				return
 			end
 		end
 	end
 
-	if not foundServer then
-		CoD.ServerList.HoveredServer = nil
-		CoD.ServerList.HoveredIndex = nil
-	end
+	CoD.ServerList.HoveredServer = nil
+	CoD.ServerList.HoveredIndex = nil
 end
 
 CoD.ServerList.FindSelectedIndex = function()
-	local foundServer = false
-
-	for index = 1, #CoD.ServerList.Servers, 1 do
-		if CoD.ServerList.SelectedServer ~= nil and CoD.ServerList.SelectedIndex ~= nil and CoD.ServerList.SelectedIndex > 1 then
+	if CoD.ServerList.SelectedServer ~= nil and CoD.ServerList.SelectedIndex ~= nil and (not Engine.LastInput_Gamepad() or CoD.ServerList.SelectedIndex > 1) then
+		for index = 1, #CoD.ServerList.Servers, 1 do
 			if CoD.ServerList.SelectedServer.ip == CoD.ServerList.Servers[index].ip and CoD.ServerList.SelectedServer.port == CoD.ServerList.Servers[index].port then
-				foundServer = true
 				CoD.ServerList.SelectedIndex = index
-				break
+				return
 			end
 		end
 	end
 
-	if not foundServer then
-		CoD.ServerList.SelectedServer = nil
-		CoD.ServerList.SelectedIndex = nil
-	end
+	CoD.ServerList.SelectedServer = nil
+	CoD.ServerList.SelectedIndex = nil
 end
 
 CoD.ServerList.ServerListRefresh = function(self, event)
