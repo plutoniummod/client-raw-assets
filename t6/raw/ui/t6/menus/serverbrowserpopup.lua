@@ -4,6 +4,8 @@ require("T6.Menus.ServerBrowserServerInfoPopup")
 
 CoD.ServerBrowser = {}
 
+CoD.ServerBrowser.PopupOpen = false
+
 CoD.ServerBrowser.UpdateHeader = function(headerButton)
 	local sortHeader = UIExpression.DvarInt(0, "ui_serverbrowser_sortheader")
 
@@ -38,6 +40,17 @@ CoD.ServerBrowser.ButtonServerInfo = function (self, event)
 	if CoD.ServerList.SelectedServer ~= nil then
 		self:openPopup( "ServerBrowserServerInfo", event.controller )
 	end
+end
+
+CoD.ServerBrowser.OcclusionChange = function (self, event)
+	CoD.ServerBrowser.PopupOpen = event.occluded
+
+	if not CoD.ServerBrowser.PopupOpen then
+		event.servers = {}
+		CoD.ServerList.ServerListRefresh(CoD.ServerList.ServerList, event)
+	end
+
+	CoD.Menu.OcclusionChange(self, event)
 end
 
 CoD.ServerBrowser.ClickHeader = function(headerButton, event)
@@ -225,6 +238,8 @@ LUI.createMenu.ServerBrowser = function (LocalClientIndex)
 
 	self.jumpToTopButton = CoD.ButtonPrompt.new("alt1", Engine.Localize("MENU_LB_TOP_OF_LIST"), self.serverList, "serverlist_jumpToTop", false, nil, nil, nil, "T", nil)
 	self:addRightButtonPrompt(self.jumpToTopButton)
+
+	self:registerEventHandler("occlusion_change", CoD.ServerBrowser.OcclusionChange)
 
 	return self
 end

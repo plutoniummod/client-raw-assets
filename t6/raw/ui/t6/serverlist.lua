@@ -479,7 +479,9 @@ CoD.ServerList.ServerListRefresh = function(self, event)
 		index = CoD.ServerList.HoveredIndex
 	end
 
-	self:setTotalItems(#CoD.ServerList.Servers, index)
+	if not CoD.ServerBrowser.PopupOpen then
+		self:setTotalItems(#CoD.ServerList.Servers, index)
+	end
 end
 
 CoD.ServerList.CreateButtonMutables = function (LocalClientIndex, element, mutables)
