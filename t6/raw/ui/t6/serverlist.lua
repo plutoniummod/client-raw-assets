@@ -58,7 +58,7 @@ CoD.ServerList.ColumnSpacing = 5
 CoD.ServerList.NumElements = 18
 CoD.ServerList.TotalWidth = 860
 CoD.ServerList.Servers = {}
-CoD.ServerList.ServersStore = {}
+CoD.ServerList.StoredServers = {}
 CoD.ServerList.HoveredServer = nil
 CoD.ServerList.HoveredIndex = nil
 CoD.ServerList.SelectedServer = nil
@@ -428,18 +428,18 @@ end
 
 CoD.ServerList.ServerListRefresh = function(self, event)
 	if event.servers == nil then
-		CoD.ServerList.ServersStore = {}
+		CoD.ServerList.StoredServers = {}
 	else
 		local numServers = #event.servers
 
 		for index = 1, numServers, 1 do
 			local server = event.servers[index]
-			
-			local numServersStore = #CoD.ServerList.ServersStore
-			local foundIndex = numServersStore + 1
 
-			for indexStore = 1, numServersStore, 1 do
-				local storeServer = CoD.ServerList.ServersStore[indexStore]
+			local numStoredServers = #CoD.ServerList.StoredServers
+			local foundIndex = numStoredServers + 1
+
+			for indexStore = 1, numStoredServers, 1 do
+				local storeServer = CoD.ServerList.StoredServers[indexStore]
 
 				if storeServer.ip == server.ip and storeServer.port == server.port then
 					foundIndex = indexStore
@@ -449,15 +449,15 @@ CoD.ServerList.ServerListRefresh = function(self, event)
 
 			CoD.ServerList.SetDisplayables(server)
 
-			CoD.ServerList.ServersStore[foundIndex] = server
+			CoD.ServerList.StoredServers[foundIndex] = server
 		end
 	end
 
 	CoD.ServerList.Servers = {}
-	local numServers = #CoD.ServerList.ServersStore
+	local numServers = #CoD.ServerList.StoredServers
 
 	for index = 1, numServers, 1 do
-		local server = CoD.ServerList.ServersStore[index]
+		local server = CoD.ServerList.StoredServers[index]
 
 		local matchesFilter = CoD.ServerList.FilterFunc(server)
 
