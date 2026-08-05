@@ -1,9 +1,6 @@
 CoD.ServerBrowserFilters = {}
 
 CoD.ServerBrowserFilters.Back = function (self, event)
-	event.servers = {}
-	CoD.ServerList.ServerListRefresh(CoD.ServerList.ServerList, event)
-
 	self:saveState()
 	self:goBack(event.controller)
 end
