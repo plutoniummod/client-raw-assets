@@ -5,18 +5,6 @@ CoD.ServerBrowserServerInfo.Back = function (self, event)
 	self:goBack(event.controller)
 end
 
-CoD.ServerBrowserServerInfo.Select = function (self, event)
-	CoD.ServerList.SelectedFromServerInfo = true
-	CoD.ServerList.SelectServer(self, event)
-	CoD.ServerList.SelectedFromServerInfo = nil
-end
-
-CoD.ServerBrowserServerInfo.Join = function (self, event)
-	CoD.ServerList.SelectedFromServerInfo = true
-	CoD.ServerList.JoinServer(self, event)
-	CoD.ServerList.SelectedFromServerInfo = nil
-end
-
 LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 	local self = CoD.GameOptionsMenu.New( owner, "ServerBrowserServerInfo" )
 
@@ -32,8 +20,8 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 		self.buttonList:addText( Engine.Localize("SERVERBROWSER_NO_SERVER_SELECTED") )
 	else
 		self.connectButton = self.buttonList:addDvarLeftRightSelector( owner, Engine.Localize("MPUI_CONNECT_CAPS"), "", Engine.Localize("SERVERBROWSER_CONNECT_TO_SERVER_HINT") )
-		self.connectButton:registerEventHandler( "button_action", CoD.ServerBrowserServerInfo.Select )
-		self.connectButton:registerEventHandler( "ui_keyboard_input", CoD.ServerBrowserServerInfo.Join )
+		self.connectButton:registerEventHandler( "button_action", CoD.ServerList.InitJoinServer )
+		self.connectButton:registerEventHandler( "ui_keyboard_input", CoD.ServerList.EnterPasswordKeyboardInput )
 
 		self.buttonList:addText("")
 
