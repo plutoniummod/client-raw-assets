@@ -149,6 +149,9 @@ LANG_ENGLISH        "Volle Server in der Serverliste anzeigen."
 REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
 LANG_ENGLISH        "Passwortgeschützte Server in der Serverliste anzeigen."
 
+REFERENCE           MENU_SERVER_BROWSER_MODS_HINT
+LANG_ENGLISH        ""
+
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
 LANG_ENGLISH        "Max. Server-Ping in der Serverliste."
 

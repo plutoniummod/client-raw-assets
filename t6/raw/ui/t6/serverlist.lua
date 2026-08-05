@@ -294,6 +294,17 @@ CoD.ServerList.FilterFunc = function(server)
 		end
 	end
 
+	local mods = UIExpression.DvarInt(0, "ui_serverbrowser_searchfilter_mods")
+	if mods == 0 then
+		if server.mod ~= "" then
+			return false
+		end
+	elseif mods == 1 then
+		if server.mod == "" then
+			return false
+		end
+	end
+
 	local aim_assist = UIExpression.DvarInt(0, "ui_serverbrowser_searchfilter_aimassist")
 	if aim_assist == 0 then
 		if server.aim_assist then
@@ -554,6 +565,7 @@ CoD.ServerList.ResetDvars = function ()
 	Engine.ExecNow(0, "set ui_serverbrowser_searchfilter_emptyservers 1\n")
 	Engine.ExecNow(0, "set ui_serverbrowser_searchfilter_fullservers 1\n")
 	Engine.ExecNow(0, "set ui_serverbrowser_searchfilter_passwordprotected 2\n")
+	Engine.ExecNow(0, "set ui_serverbrowser_searchfilter_mods 2\n")
 	Engine.ExecNow(0, "set ui_serverbrowser_searchfilter_aimassist 2\n")
 	Engine.ExecNow(0, "set ui_serverbrowser_searchfilter_hidebrainrot 0\n")
 	Engine.ExecNow(0, "set ui_serverbrowser_searchfilter_gamemode \"\"\n")

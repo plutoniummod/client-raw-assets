@@ -149,6 +149,9 @@ LANG_ENGLISH        "Muestra servidores llenos en la lista"
 REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
 LANG_ENGLISH        "Muestra servidores protegidos por contraseña en la lista"
 
+REFERENCE           MENU_SERVER_BROWSER_MODS_HINT
+LANG_ENGLISH        ""
+
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
 LANG_ENGLISH        "Ping máximo de los servidores de la lista"
 

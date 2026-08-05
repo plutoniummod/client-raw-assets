@@ -147,6 +147,9 @@ LANG_ENGLISH        "Czy wyświetlać pełne serwery."
 REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
 LANG_ENGLISH        "Czy wyświetlać serwery zabezpieczone hasłem."
 
+REFERENCE           MENU_SERVER_BROWSER_MODS_HINT
+LANG_ENGLISH        ""
+
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
 LANG_ENGLISH        "Górna granica pingu wyświetlanych serwerów."
 
