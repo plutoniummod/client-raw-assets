@@ -32,11 +32,11 @@ CoD.ServerBrowser.UpdateHeader = function(headerButton)
 	end
 end
 
-CoD.ServerBrowser.ButtonPromptSearch = function (self, event)
+CoD.ServerBrowser.ButtonPromptFilters = function (self, event)
 	self:openPopup( "ServerBrowserFilters", event.controller )
 end
 
-CoD.ServerBrowser.ButtonServerInfo = function (self, event)
+CoD.ServerBrowser.ButtonPromptServerInfo = function (self, event)
 	if CoD.ServerList.SelectedServer ~= nil then
 		self:openPopup( "ServerBrowserServerInfo", event.controller )
 	end
@@ -228,13 +228,13 @@ LUI.createMenu.ServerBrowser = function (LocalClientIndex)
 	self.refreshButton = CoD.ButtonPrompt.new("alt2", Engine.Localize("MENU_REFRESH"), self.serverList, "button_prompt_refresh", false, nil, nil, nil, "R", nil)
 	self:addRightButtonPrompt(self.refreshButton)
 
-	self.searchButton = CoD.ButtonPrompt.new("start", Engine.Localize("MENU_FILTER_SERVERS"), self, "button_prompt_search", false, nil, nil, nil, "E", nil)
-	self:addRightButtonPrompt(self.searchButton)
-	self:registerEventHandler("button_prompt_search", CoD.ServerBrowser.ButtonPromptSearch)
+	self.filtersButton = CoD.ButtonPrompt.new("start", Engine.Localize("MENU_FILTER_SERVERS"), self, "button_prompt_filters", false, nil, nil, nil, "E", nil)
+	self:addRightButtonPrompt(self.filtersButton)
+	self:registerEventHandler("button_prompt_filters", CoD.ServerBrowser.ButtonPromptFilters)
 
-	self.showServerStatusButton = CoD.ButtonPrompt.new("select", Engine.Localize("MENU_SERVER_INFO"), self, "button_prompt_status", false, nil, nil, nil, "S", nil)
-	self:addRightButtonPrompt(self.showServerStatusButton)
-	self:registerEventHandler("button_prompt_status", CoD.ServerBrowser.ButtonServerInfo)
+	self.serverInfoButton = CoD.ButtonPrompt.new("select", Engine.Localize("MENU_SERVER_INFO"), self, "button_prompt_server_info", false, nil, nil, nil, "S", nil)
+	self:addRightButtonPrompt(self.serverInfoButton)
+	self:registerEventHandler("button_prompt_server_info", CoD.ServerBrowser.ButtonPromptServerInfo)
 
 	self.jumpToTopButton = CoD.ButtonPrompt.new("alt1", Engine.Localize("MENU_LB_TOP_OF_LIST"), self.serverList, "serverlist_jumpToTop", false, nil, nil, nil, "T", nil)
 	self:addRightButtonPrompt(self.jumpToTopButton)
