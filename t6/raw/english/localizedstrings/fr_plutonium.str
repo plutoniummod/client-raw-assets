@@ -150,7 +150,7 @@ REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
 LANG_ENGLISH        "Montrer les serveurs vides sur la liste des serveurs."
 
 REFERENCE           MENU_SERVER_BROWSER_MODS_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Afficher les serveurs moddé sur la liste des serveurs"
 
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
 LANG_ENGLISH        "Ping maximum des serveurs sur la liste des serveurs."
@@ -159,25 +159,25 @@ REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_HINT
 LANG_ENGLISH        "Afficher les serveurs avec l'aide à la visée sur la liste des serveurs."
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_MP
-LANG_ENGLISH        ""
+LANG_ENGLISH        "MASQUER LES SERVEURS SNIPER"
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_HINT_MP
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Masquer les serveurs snipers et trickshotting sur la liste des serveurs."
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_ZM
-LANG_ENGLISH        ""
+LANG_ENGLISH        "MASQUER LES SERVEURS BANQUES"
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_HINT_ZM
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Masquer les serveurs affichant la banque sur la liste des serveurs."
 
 REFERENCE           SERVERBROWSER_HARDCORE_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Afficher les serveurs hardcores sur la liste des serveurs."
 
 REFERENCE           SERVERBROWSER_GAMETYPE_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Afficher les serveurs jouant le mode de jeu spécifique sur la liste des serveurs."
 
 REFERENCE           SERVERBROWSER_MAP_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Afficher les serveurs jouant sur la map spécifique sur la liste des serveur."
 
 // SERVERBROWSERSERVERINFO
 

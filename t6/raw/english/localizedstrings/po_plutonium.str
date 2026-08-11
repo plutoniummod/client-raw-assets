@@ -139,43 +139,43 @@ REFERENCE           MENU_SERVER_BROWSER_SEARCH_FILTER_HINT
 LANG_ENGLISH        "Tekstowe filtrowanie listy serwerów."
 
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_EMPTY_HINT
-LANG_ENGLISH        "Czy wyświetlać puste serwery."
+LANG_ENGLISH        "Pokaż puste serwery na liście."
 
 REFERENCE           MENU_SERVER_BROWSER_DISPLAY_FULL_HINT
-LANG_ENGLISH        "Czy wyświetlać pełne serwery."
+LANG_ENGLISH        "Pokaż pełne serwery na liście."
 
 REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
-LANG_ENGLISH        "Czy wyświetlać serwery zabezpieczone hasłem."
+LANG_ENGLISH        "Pokaż serwery chronione hasłem na liście."
 
 REFERENCE           MENU_SERVER_BROWSER_MODS_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Pokaż serwery z zainstalowanymi modyfikacjami na liście."
 
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
 LANG_ENGLISH        "Górna granica pingu wyświetlanych serwerów."
 
 REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_HINT
-LANG_ENGLISH        "Czy wyświetlać serwery z asytą celowania."
+LANG_ENGLISH        "Pokaż serwery z asystą celowania."
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_MP
-LANG_ENGLISH        ""
+LANG_ENGLISH        "UKRYJ SERWERY SNAJPERSKIE"
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_HINT_MP
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Ukryj serwery typu tylko snajperki oraz trickshooterskie."
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_ZM
-LANG_ENGLISH        ""
+LANG_ENGLISH        "UKRYJ SERWERY BANK"
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_HINT_ZM
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Ukryj serwery reklamujące bank."
 
 REFERENCE           SERVERBROWSER_HARDCORE_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Pokaż serwery hardcore na liście."
 
 REFERENCE           SERVERBROWSER_GAMETYPE_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Ogranicz wyświetlane serwery do wskazanego trybu gry."
 
 REFERENCE           SERVERBROWSER_MAP_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Ogranicz wyświetlane serwery do wskazanej mapy."
 
 // SERVERBROWSERSERVERINFO
 

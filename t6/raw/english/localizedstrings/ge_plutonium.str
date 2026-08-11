@@ -150,7 +150,7 @@ REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
 LANG_ENGLISH        "Passwortgeschützte Server in der Serverliste anzeigen."
 
 REFERENCE           MENU_SERVER_BROWSER_MODS_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Modifizierte Server in der Serverliste anzeigen."
 
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
 LANG_ENGLISH        "Max. Server-Ping in der Serverliste."
@@ -159,25 +159,25 @@ REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_HINT
 LANG_ENGLISH        "Server mit Zielhilfe in der Serverliste anzeigen."
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_MP
-LANG_ENGLISH        ""
+LANG_ENGLISH        "SNIPER-SERVER AUSBLENDEN"
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_HINT_MP
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Trickshot- und Sniper-Server in der Serverliste ausblenden."
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_ZM
-LANG_ENGLISH        ""
+LANG_ENGLISH        "BANK-SERVER AUSBLENDEN"
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_HINT_ZM
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Server mit Bank-Werbung in der Serverliste ausblenden."
 
 REFERENCE           SERVERBROWSER_HARDCORE_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Hardcore-Server in der Serverliste anzeigen."
 
 REFERENCE           SERVERBROWSER_GAMETYPE_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Server mit dem spezifischen Spieltyp in der Serverliste anzeigen."
 
 REFERENCE           SERVERBROWSER_MAP_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Server mit der spezifischen Karte in der Serverliste anzeigen."
 
 // SERVERBROWSERSERVERINFO
 

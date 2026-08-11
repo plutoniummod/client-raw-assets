@@ -150,7 +150,7 @@ REFERENCE           MENU_SERVER_BROWSER_PASSWORD_PROTECTED_HINT
 LANG_ENGLISH        "Muestra servidores protegidos por contraseña en la lista"
 
 REFERENCE           MENU_SERVER_BROWSER_MODS_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Muestra servidores con mods en la lista."
 
 REFERENCE           MENU_SERVER_BROWSER_MAX_PING_HINT
 LANG_ENGLISH        "Ping máximo de los servidores de la lista"
@@ -159,25 +159,25 @@ REFERENCE           MENU_SERVER_BROWSER_AIM_ASSIST_HINT
 LANG_ENGLISH        "Muestra servidores con aim assist en la lista"
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_MP
-LANG_ENGLISH        ""
+LANG_ENGLISH        "OCULTAR SERVIDORES DE FRANCOTIRADORES"
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_HINT_MP
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Oculta servidores de trickshots y francotiradores en la lista."
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_ZM
-LANG_ENGLISH        ""
+LANG_ENGLISH        "OCULTAR SERVIDORES CON BANCO"
 
 REFERENCE           SERVERBROWSER_HIDEBRAINROT_HINT_ZM
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Oculta servidores que anuncien banco en la lista."
 
 REFERENCE           SERVERBROWSER_HARDCORE_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Muestra servidores en modo extremo en la lista."
 
 REFERENCE           SERVERBROWSER_GAMETYPE_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Muestra servidores con el modo de juego específico en la lista."
 
 REFERENCE           SERVERBROWSER_MAP_HINT
-LANG_ENGLISH        ""
+LANG_ENGLISH        "Muestra servidores con el mapa específico en la lista."
 
 // SERVERBROWSERSERVERINFO
 
