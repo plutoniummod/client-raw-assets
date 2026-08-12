@@ -37,17 +37,25 @@ CoD.ServerBrowser.ButtonPromptFilters = function (self, event)
 end
 
 CoD.ServerBrowser.ButtonPromptServerInfo = function (self, event)
-	if CoD.ServerList.SelectedServer ~= nil then
-		self:openPopup( "ServerBrowserServerInfo", event.controller )
+	if CoD.ServerList.SelectedIndex == nil then
+		return
 	end
+
+	Engine.PlaySound("cac_grid_nav")
+	self:openPopup( "ServerBrowserServerInfo", event.controller )
 end
 
 CoD.ServerBrowser.OcclusionChange = function (self, event)
 	CoD.ServerBrowser.PopupOpen = event.occluded
 
 	if not CoD.ServerBrowser.PopupOpen then
-		event.servers = {}
+		local prevFocusSelected = CoD.ServerList.FocusSelected
+		CoD.ServerList.FocusSelected = true
 		CoD.ServerList.ServerListRefresh(CoD.ServerList.ServerList, event)
+		CoD.ServerList.FocusSelected = prevFocusSelected
+	else
+		CoD.ServerList.HoveredIndex = nil
+		CoD.ServerList.UpdateButtons(CoD.ServerList.ServerList)
 	end
 
 	CoD.Menu.OcclusionChange(self, event)
@@ -70,7 +78,8 @@ CoD.ServerBrowser.ClickHeader = function(headerButton, event)
 		headerButton.parent.headers[Column]:updateHeader()
 	end
 
-	event.servers = {}
+	CoD.ServerList.FocusSelected = false
+	CoD.ServerList.ServerList:generate()
 	CoD.ServerList.ServerListRefresh(CoD.ServerList.ServerList, event)
 end
 

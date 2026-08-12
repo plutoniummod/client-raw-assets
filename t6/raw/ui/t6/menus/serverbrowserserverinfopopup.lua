@@ -16,7 +16,9 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 
 	self.buttonList:addText("")
 
-	if CoD.ServerList.SelectedServer == nil then
+	local server = CoD.ServerList.Servers[CoD.ServerList.SelectedIndex]
+
+	if server == nil then
 		self.buttonList:addText( Engine.Localize("SERVERBROWSER_NO_SERVER_SELECTED") )
 	else
 		self.connectButton = self.buttonList:addDvarLeftRightSelector( owner, Engine.Localize("MPUI_CONNECT_CAPS"), "", Engine.Localize("SERVERBROWSER_CONNECT_TO_SERVER_HINT") )
@@ -25,41 +27,41 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 
 		self.buttonList:addText("")
 
-		self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_SERVERNAME")) .. ": " .. CoD.ServerList.SelectedServer.hostname)
-		self.buttonList:addText(Engine.Localize("MENU_MAP_NAME_CAPS") .. ": " .. CoD.ServerList.SelectedServer.displayable_map)
-		self.buttonList:addText(Engine.Localize("MENU_GAME_MODE_CAPS") .. ": " .. CoD.ServerList.SelectedServer.displayable_gametype)
+		self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_SERVERNAME")) .. ": " .. server.hostname)
+		self.buttonList:addText(Engine.Localize("MENU_MAP_NAME_CAPS") .. ": " .. server.displayable_map)
+		self.buttonList:addText(Engine.Localize("MENU_GAME_MODE_CAPS") .. ": " .. server.displayable_gametype)
 
 		if CoD.isZombie then
-			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("ZOMBIE_ROUND")) .. ": " .. CoD.ServerList.SelectedServer.rounds)
+			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("ZOMBIE_ROUND")) .. ": " .. server.rounds)
 		else
-			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("MENU_RULES_HARDCORE")) .. ": " .. (CoD.ServerList.SelectedServer.is_hardcore and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
+			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("MENU_RULES_HARDCORE")) .. ": " .. (server.is_hardcore and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
 		end
 
-		self.buttonList:addText(Engine.Localize("MENU_PING_CAPS") .. ": " .. CoD.ServerList.SelectedServer.ping)
-		self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_PASSWORD")) .. ": " .. (CoD.ServerList.SelectedServer.has_password and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
+		self.buttonList:addText(Engine.Localize("MENU_PING_CAPS") .. ": " .. server.ping)
+		self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_PASSWORD")) .. ": " .. (server.has_password and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
 
-		local modName = CoD.ServerList.SelectedServer.mod
+		local modName = server.mod
 
 		if modName ~= "" then
-			if CoD.ServerList.SelectedServer.displayable_mod ~= nil then
-				modName = CoD.ServerList.SelectedServer.displayable_mod
+			if server.displayable_mod ~= nil then
+				modName = server.displayable_mod
 			end
 
 			self.buttonList:addText(UIExpression.ToUpper(nil, Engine.Localize("EXE_SV_INFO_MOD")) .. ": " .. modName)
 		end
 
-		self.buttonList:addText(Engine.Localize("MENU_AIM_ASSIST_CAPS") .. ": " .. (CoD.ServerList.SelectedServer.aim_assist and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
+		self.buttonList:addText(Engine.Localize("MENU_AIM_ASSIST_CAPS") .. ": " .. (server.aim_assist and Engine.Localize("MENU_YES_CAPS") or Engine.Localize("MENU_NO_CAPS")))
 
 		self.buttonList:addText("")
 
-		if CoD.ServerList.SelectedServer.bots > 0 then
-			self.buttonList:addText(Engine.Localize("MENU_PLAYERS_CAPS") .. ": " .. #CoD.ServerList.SelectedServer.players .. "/" .. CoD.ServerList.SelectedServer.maxplayers .. " (" .. CoD.ServerList.SelectedServer.bots .. ")")
+		if server.bots > 0 then
+			self.buttonList:addText(Engine.Localize("MENU_PLAYERS_CAPS") .. ": " .. #server.players .. "/" .. server.maxplayers .. " (" .. server.bots .. ")")
 		else
-			self.buttonList:addText(Engine.Localize("MENU_PLAYERS_CAPS") .. ": " .. #CoD.ServerList.SelectedServer.players .. "/" .. CoD.ServerList.SelectedServer.maxplayers)
+			self.buttonList:addText(Engine.Localize("MENU_PLAYERS_CAPS") .. ": " .. #server.players .. "/" .. server.maxplayers)
 		end
 
 		local playersPerRow = 4
-		local totalRows = math.ceil(#CoD.ServerList.SelectedServer.players / playersPerRow)
+		local totalRows = math.ceil(#server.players / playersPerRow)
 
 		for row = 1, totalRows, 1 do
 			local rowContainer = LUI.UIElement.new({
@@ -101,7 +103,7 @@ LUI.createMenu.ServerBrowserServerInfo = function ( owner )
 				})
 
 				local playerIndex = ((row - 1) * playersPerRow) + col
-				local player = CoD.ServerList.SelectedServer.players[playerIndex]
+				local player = server.players[playerIndex]
 
 				if player and player.username then
 					text:setText(player.username)
