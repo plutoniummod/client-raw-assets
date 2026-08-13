@@ -56,53 +56,208 @@ CoD.ServerList.Columns[CoD.ServerList.COLUMN_PING].Text = Engine.Localize("MENU_
 CoD.ServerList.RowHeight = CoD.CoD9Button.Height
 CoD.ServerList.ColumnSpacing = 5
 CoD.ServerList.NumElements = 18
-CoD.ServerList.TotalWidth = 860
+CoD.ServerList.TotalWidth = 0
+
+for Column = 1, #CoD.ServerList.Columns, 1 do
+	CoD.ServerList.TotalWidth = CoD.ServerList.TotalWidth + CoD.ServerList.Columns[Column].Width
+
+	if Column < #CoD.ServerList.Columns then
+		CoD.ServerList.TotalWidth = CoD.ServerList.TotalWidth + CoD.ServerList.ColumnSpacing
+	end
+end
+
 CoD.ServerList.Servers = {}
 CoD.ServerList.StoredServers = {}
-CoD.ServerList.HoveredServer = nil
-CoD.ServerList.HoveredIndex = nil
-CoD.ServerList.SelectedServer = nil
 CoD.ServerList.SelectedIndex = nil
+CoD.ServerList.HoveredIndex = nil
+CoD.ServerList.HasSelected = false
+CoD.ServerList.FocusSelected = false
+CoD.ServerList.Generating = false
+CoD.ServerList.HoldingUpButton = false
+CoD.ServerList.HoldingDownButton = false
 CoD.ServerList.OpenedOnce = false
 CoD.ServerList.EnterPasswordKeyboardOpen = false
 CoD.ServerList.JoinTime = nil
 
-CoD.ServerList.UpdateButtonBorders = function(self)
+CoD.ServerList.UpdateButtons = function(self)
 	local button = self.m_firstButton
 	while button ~= nil do
-		button.body.m_mutables.serverListButton:updateBorder()
+		local serverListButton = button.body.m_mutables.serverListButton
+
+		if CoD.ServerList.SelectedIndex ~= nil and serverListButton.index ~= nil and CoD.ServerList.SelectedIndex == serverListButton.index then
+			button.body.buttonBorder:show()
+		else
+			button.body.buttonBorder:hide()
+		end
+
+		if CoD.ServerList.HoveredIndex ~= nil and serverListButton.index ~= nil and CoD.ServerList.HoveredIndex == serverListButton.index and CoD.ServerList.SelectedIndex ~= serverListButton.index then
+			button.body.buttonBg:setRGB(1, 1, 1)
+		else
+			button.body.buttonBg:setRGB(0, 0, 0)
+		end
+
 		button = button.nextButton
 	end
 end
 
-CoD.ServerList.HoverServer = function (self, event)
-	if Engine.LastInput_Gamepad() then
-		if CoD.ServerList.SelectedServer == nil or self.server == nil or CoD.ServerList.SelectedServer.ip ~= self.server.ip or CoD.ServerList.SelectedServer.port ~= self.server.port then
-			CoD.ServerList.HoveredServer = nil
-			CoD.ServerList.HoveredIndex = nil
-			CoD.ServerList.SelectedServer = self.server
-			CoD.ServerList.SelectedIndex = self.index
-			CoD.ServerList.UpdateButtonBorders(self.parent)
+CoD.ServerList.SetPositionText = function (self)
+	local textField = self.m_positionText.textFieldSelected
+	local text = ""
+
+	if CoD.ServerList.SelectedIndex ~= nil then
+		text = Engine.Localize(CoD.ListBox.POSITION_TEXT_DEFAULT, CoD.ServerList.SelectedIndex, self.m_totalItems)
+	end
+
+	textField:setText(text)
+
+	local _, __, textWidth, ___ = GetTextDimensions(text .. " ", textField.font, textField.fontHeight)
+
+	textField:setLeftRight(false, false, 0, math.abs(textWidth))
+end
+
+CoD.ServerList.Generate = function(self, index)
+	CoD.ServerList.Generating = true
+
+	if CoD.ServerList.SelectedIndex == nil then
+		CoD.ServerList.HasSelected = false
+
+		if #CoD.ServerList.Servers > 0 then
+			CoD.ServerList.SelectedIndex = 1
 		end
-	else
-		if CoD.ServerList.HoveredServer == nil or self.server == nil or CoD.ServerList.HoveredServer.ip ~= self.server.ip or CoD.ServerList.HoveredServer.port ~= self.server.port then
-			CoD.ServerList.HoveredServer = self.server
-			CoD.ServerList.HoveredIndex = self.index
-			CoD.ServerList.UpdateButtonBorders(self.parent)
+	end
+
+	local relativeHoveredIndex = nil
+
+	if CoD.ServerList.HoveredIndex ~= nil then
+		relativeHoveredIndex = CoD.ServerList.HoveredIndex - self.m_pageStartIndex
+	end
+
+	self:generateOld(index)
+
+	if relativeHoveredIndex ~= nil then
+		CoD.ServerList.HoveredIndex = self.m_pageStartIndex + relativeHoveredIndex
+		CoD.ServerList.UpdateButtons(self)
+	end
+
+	CoD.ServerList.SetPositionText(self)
+
+	CoD.ServerList.Generating = false
+end
+
+CoD.ServerList.HandleGamepadButton = function (self, event)
+	if LUI.UIElement.handleGamepadButton(self, event) then
+		return true
+	elseif event.button == self.buttonName and not event.buttonRepeat then
+		local serverList = self:getParent()
+
+		if event.qualifier == "mwheel" then
+			if event.down == true then
+				CoD.ServerList.FocusSelected = false
+
+				local index = serverList.m_pageStartIndex + math.floor(serverList.m_numButtons / 2)
+
+				if event.button == "up" then
+					local pageEndIndex = serverList.m_pageStartIndex + serverList.m_numButtons - 1
+
+					-- have to move up 1 more at the bottom of the list
+					if pageEndIndex >= serverList.m_totalItems then
+						index = index - 2
+					else
+						index = index - 1
+					end
+				elseif event.button == "down" then
+					index = index + 1
+				end
+
+				local prevHoveredIndex = CoD.ServerList.HoveredIndex
+
+				serverList:generate(index)
+
+				if CoD.ServerList.HoveredIndex ~= prevHoveredIndex then
+					Engine.PlaySound("cac_grid_nav")
+				end
+			end
+		else
+			if event.button == "up" then
+				CoD.ServerList.HoldingUpButton = false
+			elseif event.button == "down" then
+				CoD.ServerList.HoldingDownButton = false
+			end
+
+			self:cancelRepetition()
+
+			if event.down == true then
+				if event.button == "up" then
+					CoD.ServerList.HoldingUpButton = true
+				elseif event.button == "down" then
+					CoD.ServerList.HoldingDownButton = true
+				end
+
+				CoD.ServerList.HoveredIndex = nil
+
+				serverList:generate(CoD.ServerList.SelectedIndex)
+
+				self.controller = event.controller
+
+				local repeatTimer = LUI.UITimer.new(self.firstDelay, {
+					name = "repeat",
+					numRepeats = 1
+				})
+				self:addElement(repeatTimer)
+				self.repeatTimer = repeatTimer
+
+				if event.name ~= self.event.name then
+					self:sendButtonRepeat()
+				end
+			end
 		end
 	end
 end
 
-CoD.ServerList.SelectServer = function (self, event)
-	if CoD.ServerList.SelectedServer == nil or self.server == nil or CoD.ServerList.SelectedServer.ip ~= self.server.ip or CoD.ServerList.SelectedServer.port ~= self.server.port then
-		CoD.ServerList.HoveredServer = nil
-		CoD.ServerList.HoveredIndex = nil
-		CoD.ServerList.SelectedServer = self.server
-		CoD.ServerList.SelectedIndex = self.index
-		CoD.ServerList.UpdateButtonBorders(self.parent)
+CoD.ServerList.UnhoverServer = function (self, event)
+	if CoD.ServerList.HoveredIndex ~= self.index then
 		return
 	end
 
+	CoD.ServerList.HoveredIndex = nil
+	CoD.ServerList.UpdateButtons(self.parent)
+end
+
+CoD.ServerList.HoverServer = function (self, event)
+	if CoD.ServerList.HoldingUpButton or CoD.ServerList.HoldingDownButton then
+		CoD.ServerList.HasSelected = true
+		CoD.ServerList.FocusSelected = true
+		CoD.ServerList.SelectedIndex = self.index
+		CoD.ServerList.HoveredIndex = nil
+		CoD.ServerList.UpdateButtons(self.parent)
+		CoD.ServerList.SetPositionText(self.parent)
+		return
+	end
+
+	if CoD.ServerList.Generating then
+		return
+	end
+
+	CoD.ServerList.FocusSelected = false
+
+	if CoD.ServerList.HoveredIndex == nil or self.index == nil or CoD.ServerList.HoveredIndex ~= self.index then
+		CoD.ServerList.HoveredIndex = self.index
+		CoD.ServerList.UpdateButtons(self.parent)
+	end
+end
+
+CoD.ServerList.SelectServer = function (self, event)
+	CoD.ServerList.HasSelected = true
+
+	if CoD.ServerList.SelectedIndex == nil or self.index == nil or CoD.ServerList.SelectedIndex ~= self.index then
+		Engine.PlaySound("cac_grid_nav")
+		CoD.ServerList.SelectedIndex = self.index
+		CoD.ServerList.UpdateButtons(self.parent)
+		CoD.ServerList.SetPositionText(self.parent)
+		return
+	end
+
+	Engine.PlaySound("cac_grid_equip_item")
 	CoD.ServerList.InitJoinServer(self, event)
 end
 
@@ -113,23 +268,28 @@ CoD.ServerList.InitJoinServer = function (self, event)
 end
 
 CoD.ServerList.JoinServer = function (self, event)
-	if CoD.ServerList.SelectedServer == nil then
+	local server = CoD.ServerList.Servers[CoD.ServerList.SelectedIndex]
+
+	if server == nil then
 		return
 	end
 
-	if CoD.ServerList.SelectedServer.has_password and not CoD.ServerList.EnterPasswordKeyboardOpen then
+	if server.has_password and not CoD.ServerList.EnterPasswordKeyboardOpen then
 		CoD.ServerList.EnterPasswordKeyboardOpen = true
 		Engine.Exec(0, "ui_keyboard_new " .. CoD.KEYBOARD_TYPE_REGISTRATION_INPUT_PASSWORD .. " \"" .. Engine.Localize("MPUI_ENTER_PASSWORD") .. "\" " .. "n/a" .. " " .. 256 .. " " .. 1)
 		return
 	end
 
 	local now = UIExpression.milliseconds()
-	if CoD.ServerList.JoinTime == nil or (now - CoD.ServerList.JoinTime) > 1000 then
-		CoD.ServerList.JoinTime = now
 
-		Engine.Exec(event.controller, "stopRefreshServers\n")
-		Engine.Exec(event.controller, "connect \"" .. CoD.ServerList.SelectedServer.ip .. ":" .. CoD.ServerList.SelectedServer.port .. "\"\n")
+	if CoD.ServerList.JoinTime ~= nil and (now - CoD.ServerList.JoinTime) <= 1000 then
+		return
 	end
+
+	CoD.ServerList.JoinTime = now
+
+	Engine.Exec(event.controller, "stopRefreshServers\n")
+	Engine.Exec(event.controller, "connect \"" .. server.ip .. ":" .. server.port .. "\"\n")
 end
 
 CoD.ServerList.EnterPasswordKeyboardInput = function (self, event)
@@ -141,7 +301,7 @@ CoD.ServerList.EnterPasswordKeyboardInput = function (self, event)
 		return
 	end
 
-	if CoD.ServerList.SelectedServer == nil or self.server == nil or CoD.ServerList.SelectedServer.ip ~= self.server.ip or CoD.ServerList.SelectedServer.port ~= self.server.port then
+	if CoD.ServerList.SelectedIndex == nil or self.index == nil or CoD.ServerList.SelectedIndex ~= self.index then
 		return
 	end
 
@@ -158,9 +318,16 @@ CoD.ServerList.ButtonPromptRefresh = function (self, event)
 end
 
 CoD.ServerList.JumpToTop = function (self, event)
-	CoD.ServerList.SelectedServer = nil
-	CoD.ServerList.SelectedIndex = nil
-	self:jumpToTop()
+	if self.m_totalItems == 0 then
+		return
+	end
+
+	if CoD.ServerList.FocusSelected then
+		CoD.ServerList.SelectedIndex = nil
+	end
+
+	Engine.PlaySound("cac_grid_nav")
+	self:generate()
 end
 
 CoD.ServerList.SetDisplayables = function(server)
@@ -402,35 +569,19 @@ CoD.ServerList.SortFunc = function(server1, server2)
 	end
 end
 
-CoD.ServerList.FindHoveredIndex = function()
-	if CoD.ServerList.HoveredServer ~= nil and CoD.ServerList.HoveredIndex ~= nil and CoD.ServerList.HoveredIndex > 1 then
+CoD.ServerList.FindServerIndex = function(server)
+	if server ~= nil then
 		for index = 1, #CoD.ServerList.Servers, 1 do
-			if CoD.ServerList.HoveredServer.ip == CoD.ServerList.Servers[index].ip and CoD.ServerList.HoveredServer.port == CoD.ServerList.Servers[index].port then
-				CoD.ServerList.HoveredIndex = index
-				return
+			if server.ip == CoD.ServerList.Servers[index].ip and server.port == CoD.ServerList.Servers[index].port then
+				return index
 			end
 		end
 	end
 
-	CoD.ServerList.HoveredServer = nil
-	CoD.ServerList.HoveredIndex = nil
+	return nil
 end
 
-CoD.ServerList.FindSelectedIndex = function()
-	if CoD.ServerList.SelectedServer ~= nil and CoD.ServerList.SelectedIndex ~= nil and (not Engine.LastInput_Gamepad() or CoD.ServerList.SelectedIndex > 1) then
-		for index = 1, #CoD.ServerList.Servers, 1 do
-			if CoD.ServerList.SelectedServer.ip == CoD.ServerList.Servers[index].ip and CoD.ServerList.SelectedServer.port == CoD.ServerList.Servers[index].port then
-				CoD.ServerList.SelectedIndex = index
-				return
-			end
-		end
-	end
-
-	CoD.ServerList.SelectedServer = nil
-	CoD.ServerList.SelectedIndex = nil
-end
-
-CoD.ServerList.ServerListRefresh = function(self, event)
+CoD.ServerList.StoredServerListRefresh = function(self, event)
 	if event.servers == nil then
 		CoD.ServerList.StoredServers = {}
 	else
@@ -442,11 +593,11 @@ CoD.ServerList.ServerListRefresh = function(self, event)
 			local numStoredServers = #CoD.ServerList.StoredServers
 			local foundIndex = numStoredServers + 1
 
-			for indexStore = 1, numStoredServers, 1 do
-				local storeServer = CoD.ServerList.StoredServers[indexStore]
+			for storedIndex = 1, numStoredServers, 1 do
+				local storedServer = CoD.ServerList.StoredServers[storedIndex]
 
-				if storeServer.ip == server.ip and storeServer.port == server.port then
-					foundIndex = indexStore
+				if storedServer.ip == server.ip and storedServer.port == server.port then
+					foundIndex = storedIndex
 					break
 				end
 			end
@@ -456,6 +607,21 @@ CoD.ServerList.ServerListRefresh = function(self, event)
 			CoD.ServerList.StoredServers[foundIndex] = server
 		end
 	end
+
+	CoD.ServerList.ServerListRefresh(self, event)
+end
+
+CoD.ServerList.ServerListRefresh = function(self, event)
+	local prevSelectedIndex = CoD.ServerList.SelectedIndex
+	local prevHoveredIndex = CoD.ServerList.HoveredIndex
+
+	if prevHoveredIndex == nil then
+		prevHoveredIndex = self.m_pageStartIndex
+	end
+
+	local selectedServer = CoD.ServerList.Servers[prevSelectedIndex]
+	local hoveredServer = CoD.ServerList.Servers[prevHoveredIndex]
+	local relativeHoveredIndex = prevHoveredIndex - self.m_pageStartIndex
 
 	CoD.ServerList.Servers = {}
 	local numServers = #CoD.ServerList.StoredServers
@@ -472,18 +638,33 @@ CoD.ServerList.ServerListRefresh = function(self, event)
 
 	table.sort(CoD.ServerList.Servers, CoD.ServerList.SortFunc)
 
-	CoD.ServerList.FindHoveredIndex()
-	CoD.ServerList.FindSelectedIndex()
-
-	local index = nil
-
-	if CoD.ServerList.SelectedIndex ~= nil then
-		index = CoD.ServerList.SelectedIndex
-	elseif CoD.ServerList.HoveredIndex ~= nil then
-		index = CoD.ServerList.HoveredIndex
+	if CoD.ServerList.HasSelected then
+		CoD.ServerList.SelectedIndex = CoD.ServerList.FindServerIndex(selectedServer)
+	else
+		CoD.ServerList.SelectedIndex = nil
 	end
 
 	if not CoD.ServerBrowser.PopupOpen then
+		local index = nil
+
+		if CoD.ServerList.FocusSelected then
+			index = CoD.ServerList.SelectedIndex
+		else
+			if self.m_pageStartIndex <= 1 then
+				index = 1
+			elseif (self.m_pageStartIndex + self.m_numButtons - 1) >= self.m_totalItems then
+				index = #CoD.ServerList.Servers
+			else
+				local hoveredIndex = CoD.ServerList.FindServerIndex(hoveredServer)
+
+				if hoveredIndex == nil then
+					hoveredIndex = self.m_pageStartIndex
+				end
+
+				index = hoveredIndex + math.floor(self.m_numButtons / 2) - relativeHoveredIndex
+			end
+		end
+
 		self:setTotalItems(#CoD.ServerList.Servers, index)
 	end
 end
@@ -501,6 +682,7 @@ CoD.ServerList.CreateButtonMutables = function (LocalClientIndex, element, mutab
 		spacing = CoD.ServerList.ColumnSpacing
 	}, LocalClientIndex)
 
+	element.serverListButton:registerEventHandler("button_up", CoD.ServerList.UnhoverServer)
 	element.serverListButton:registerEventHandler("button_over", CoD.ServerList.HoverServer)
 	element.serverListButton:registerEventHandler("button_action", CoD.ServerList.SelectServer)
 	element.serverListButton:registerEventHandler("ui_keyboard_input", CoD.ServerList.EnterPasswordKeyboardInput)
@@ -511,7 +693,6 @@ CoD.ServerList.GetButtonData = function (LocalClientIndex, index, element, paren
 	element.serverListButton.server = CoD.ServerList.Servers[index]
 	element.serverListButton.parent = parent
 	element.serverListButton.index = index
-	element.serverListButton:updateBorder()
 
 	local ColumnValues = {}
 	ColumnValues[CoD.ServerList.COLUMN_PASSWORD] = element.serverListButton.server.has_password
@@ -585,9 +766,42 @@ CoD.ServerList.new = function (defaultAnimationState, LocalClientIndex)
 	self.id = "ServerList"
 	self:addScrollBar()
 
-	self:registerEventHandler("server_list_refresh", CoD.ServerList.ServerListRefresh)
+	self.generateOld = self.generate
+	self.generate = CoD.ServerList.Generate
+
+	self.buttonRepeaterUp.handleGamepadButton = CoD.ServerList.HandleGamepadButton
+	self.buttonRepeaterDown.handleGamepadButton = CoD.ServerList.HandleGamepadButton
+	self.buttonRepeaterClick.handleGamepadButton = CoD.ServerList.HandleGamepadButton
+
+	self.m_positionTextString = ""
+
+	self.m_positionText.textFieldSelected = LUI.UIText.new({
+		left = 0,
+		top = -CoD.textSize.ExtraSmall / 2,
+		right = 0,
+		bottom = CoD.textSize.ExtraSmall / 2,
+		leftAnchor = false,
+		topAnchor = false,
+		rightAnchor = false,
+		bottomAnchor = false,
+		font = CoD.fonts.ExtraSmall,
+		alignment = LUI.Alignment.Left
+	})
+	self.m_positionText.textFieldSelected.font = CoD.fonts.ExtraSmall
+	self.m_positionText.textFieldSelected.fontHeight = -CoD.textSize.ExtraSmall / 2 - CoD.textSize.ExtraSmall / 2
+	self.m_positionText:addElement(self.m_positionText.textFieldSelected)
+
+	-- update buttons after everything else
+	self:registerEventHandler("listbox_button_gain_focus", CoD.ServerList.UpdateButtons)
+	self:registerEventHandler("listbox_button_lose_focus", CoD.ServerList.UpdateButtons)
+
+	self:registerEventHandler("server_list_refresh", CoD.ServerList.StoredServerListRefresh)
 	self:registerEventHandler("button_prompt_refresh", CoD.ServerList.ButtonPromptRefresh)
 	self:registerEventHandler("serverlist_jumpToTop", CoD.ServerList.JumpToTop)
+
+	CoD.ServerList.ServerList = self
+
+	CoD.ServerList.HoveredIndex = nil
 
 	if not CoD.ServerList.OpenedOnce then
 		CoD.ServerList.OpenedOnce = true
@@ -611,8 +825,6 @@ CoD.ServerList.new = function (defaultAnimationState, LocalClientIndex)
 		name = "server_list_refresh",
 		servers = {}
 	} )
-
-	CoD.ServerList.ServerList = self
 
 	return self
 end
