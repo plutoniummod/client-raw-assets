@@ -249,10 +249,14 @@ CoD.OptionsControls.CreateCombatTab = function (combatTab, localClientIndex)
 		},
 		{
 			command = "+weapnext_inventory",
-			label = "PLATFORM_SWITCH_WEAPON_CAPS"
+			label = "MENU_SWITCH_WEAPON_CAPS"
 		},
 		{
 			command = "weapprev",
+			label = "PLATFORM_SWITCH_WEAPON_CAPS"
+		},
+		{
+			command = "weapnext",
 			label = "PLATFORM_NEXT_WEAPON_CAPS"
 		},
 		{
