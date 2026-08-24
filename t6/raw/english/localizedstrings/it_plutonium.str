@@ -2,6 +2,11 @@ VERSION             "1"
 CONFIG              "C:/projects/cod/t6/bin/StringEd.cfg"
 FILENOTES           "Translated from English to Italian. When literal translation feels unnatural, the use of <articoli determinativi> is used to naturalise the flow of the text. Translation type: functional equivalence. NO AI WAS USED. Thanks FutureRave"
 
+// MAINLOBBY
+
+REFERENCE           MPUI_MODS_DESC
+LANG_ENGLISH        ""
+
 // MODS
 
 REFERENCE           MOD_LOAD

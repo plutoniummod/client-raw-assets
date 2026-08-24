@@ -2,6 +2,11 @@ VERSION             "1"
 CONFIG              "C:/projects/cod/t6/bin/StringEd.cfg"
 FILENOTES           "Thanks luigistyle"
 
+// MAINLOBBY
+
+REFERENCE           MPUI_MODS_DESC
+LANG_ENGLISH        ""
+
 // MODS
 
 REFERENCE           MOD_LOAD
