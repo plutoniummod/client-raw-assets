@@ -430,7 +430,7 @@ CoD.MainLobby.PopulateButtons_Multiplayer = function (MainLobbyButtonPane)
 	MainLobbyButtonPane.body.optionsButton.hintText = Engine.Localize("MPUI_OPTIONS_DESC")
 	MainLobbyButtonPane.body.optionsButton:setActionEventName("open_options_menu")
 	MainLobbyButtonPane.body.modsButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_MODS_CAPS"), nil, 12)
-	MainLobbyButtonPane.body.modsButton.hintText = Engine.Localize("MPUI_EDIT_GAME_OPTIONS_DESC")
+	MainLobbyButtonPane.body.modsButton.hintText = Engine.Localize("MPUI_MODS_DESC")
 	MainLobbyButtonPane.body.modsButton:setActionEventName("open_mods_menu")
 end
 
@@ -463,7 +463,7 @@ CoD.MainLobby.PopulateButtons_Zombie = function (MainLobbyButtonPane)
 	MainLobbyButtonPane.body.optionsButton.hintText = Engine.Localize("MPUI_OPTIONS_DESC")
 	MainLobbyButtonPane.body.optionsButton:setActionEventName("open_options_menu")
 	MainLobbyButtonPane.body.modsButton = MainLobbyButtonPane.body.buttonList:addButton(Engine.Localize("MENU_MODS_CAPS"), nil, 10)
-	MainLobbyButtonPane.body.modsButton.hintText = Engine.Localize("MPUI_EDIT_GAME_OPTIONS_DESC")
+	MainLobbyButtonPane.body.modsButton.hintText = Engine.Localize("MPUI_MODS_DESC")
 	MainLobbyButtonPane.body.modsButton:setActionEventName("open_mods_menu")
 end
 

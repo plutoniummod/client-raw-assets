@@ -2,6 +2,11 @@ VERSION             "1"
 CONFIG              "C:/projects/cod/t6/bin/StringEd.cfg"
 FILENOTES           "T6 is all UTF-8 encoded"
 
+// MAINLOBBY
+
+REFERENCE           MPUI_MODS_DESC
+LANG_ENGLISH        "Play modifications created by the community."
+
 // MODS
 
 REFERENCE           MOD_LOAD
